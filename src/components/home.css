@@ -1,0 +1,7 @@
+.home .right-side{
+  background-color: black;
+  min-height: 50vh;
+}
+.home{
+  min-height: 100vh;
+}

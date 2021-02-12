@@ -1,0 +1,7 @@
+export const FETCH_REQUEST = "FETCH_REQUEST";
+export const FETCH_FAILURE = "FETCH_FAILURE";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const AUTHENTICATE_USER = "AUTHENTICATE_USER";
+export const CLEAR_ERR = "CLEAR_ERR";
+export const LOGOUT = "LOGOUT";

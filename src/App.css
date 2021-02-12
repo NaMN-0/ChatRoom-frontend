@@ -1,0 +1,31 @@
+/*Common*/
+.bg-grey{
+  background-color: grey;
+}
+.bg-red{
+  background-color: red;
+}
+.bg-green{
+  background-color: green;
+}
+.bg-blue{
+  background-color: blue;
+}
+
+.msg{
+  color: black;
+}
+
+.back-btn{
+  border-radius: 50%;
+}
+
+/*Register*/
+.register{
+  min-height: 100vh;
+}
+
+/*Login*/
+.login{
+  min-height: 100vh;
+}
