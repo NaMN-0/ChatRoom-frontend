@@ -5,12 +5,25 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
 }
 
+.settings-btn{
+  border-radius: 50%;
+}
+
 .profileImgDiv{
-  height: 50px;
+  height: 70px !important;
+  width: 70px !important;
   background-size: cover;
   background-position: center;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
   border-radius: 50%;
+}
+
+.online{
+  color: green;
+}
+
+.lastSeen{
+  color: grey;
 }
 
 .interests{
@@ -19,7 +32,7 @@
 
 .interest-span{
   border-radius: 5px;
-  color: black;
-  font-weight: 450;
+  color: white;
+  font-weight: 500;
   box-shadow: 0px 1px 3px rgb(0, 0, 0);
 }

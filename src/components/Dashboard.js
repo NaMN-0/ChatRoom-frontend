@@ -6,6 +6,7 @@ import { logout } from "../actions/auth.js";
 
 import Navbar from "./Navbar";
 import ProfileCard from "./ProfileCard";
+import ChatBox from "./ChatBox";
 
 import "./dashboard.css"
 
@@ -18,11 +19,11 @@ function Dashboard(props) {
       <Navbar/>
       <div className = "dashboard">
         <div className = "row p-0 m-0 bg-grey">
-          <div className = "col-lg-2 left p-0 m-0">
+          <div className = "col-lg-3 left p-0 m-0">
             <ProfileCard user={user}/>
           </div>
-          <div className = "col-lg-7 mid p-0 m-0">
-            naman
+          <div className = "col-lg-6 mid p-0 m-0">
+            <ChatBox />
           </div>
           <div className = "col-lg-3 right p-0 m-0">
             naman
