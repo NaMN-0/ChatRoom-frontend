@@ -15,7 +15,7 @@ function Login(props) {
   },[]);
 
   useEffect(() => {
-    if(props.user){
+    if(props.userToken){
       history.push("/dashboard");
     }
   });
@@ -23,7 +23,7 @@ function Login(props) {
   const loginHandler = (e) => {
     e.preventDefault();
     const user = {
-      email : e.target.email.value,
+      username : e.target.username.value,
       password : e.target.password.value,
     }
     props.dispatch(login(user));
@@ -44,7 +44,7 @@ function Login(props) {
             <hr/>
             <form className="mb-4" onSubmit={(e)=>{loginHandler(e)}}>
               <div className="form-group">
-                <input className="form-control" name="email" type="email" placeholder="E-mail"/>
+                <input className="form-control" name="username" type="name" placeholder="Username"/>
               </div>
               <div className="form-group">
                 <input className="form-control" name="password" type="password" placeholder="Password"/>

@@ -1,7 +1,9 @@
 const root = "http://localhost:8000/api"
 
 export const apiUrls = {
-    getUsers: () => "https://jsonplaceholder.typicode.com/users",
-    register: () => `${root}/user/register`,
-    login: () => `${root}/user/login`
+    addPeople: () => `${root}/user/addPeople`,
+    searchUser: () => `${root}/user/search`,
+    getUser: () => `${root}/user/detail`,
+    register: () => `${root}/auth/register`,
+    login: () => `${root}/auth/login`
 };

@@ -1,10 +1,20 @@
-import { FETCH_FAILURE, FETCH_REQUEST, LOGIN_SUCCESS, REGISTER_SUCCESS, AUTHENTICATE_USER, CLEAR_ERR, LOGOUT } from '../actions/actionTypes';
+import { FETCH_FAILURE, FETCH_REQUEST, 
+    LOGIN_SUCCESS, REGISTER_SUCCESS, AUTHENTICATE_USER, 
+    CLEAR_ERR, LOGOUT, 
+    GET_USER_SUCCESS, 
+    SEARCH_USER_SUCCESS, SEARCH_USER_FAILURE,
+    ADD_PEOPLE_SUCCESS, ADD_PEOPLE_FAILURE,
+    SET_USER2
+ } from '../actions/actionTypes';
 
 const initState = {
     loading: false,
+    userToken: null,
     user: null,
+    user2: null,
     msg: "",
-    isLoggedIn: false
+    isLoggedIn: false,
+    searchedUser: null
 }
 
 export default function reducer(state = initState, action){
@@ -19,7 +29,6 @@ export default function reducer(state = initState, action){
             return{
                 ...state,
                 loading: false,
-                user: null,
                 msg: action.payload,
             }
         case REGISTER_SUCCESS : 
@@ -32,16 +41,16 @@ export default function reducer(state = initState, action){
             return{
                 ...state,
                 loading: false,
-                user: action.payload,
-                msg: 'Logged In Successfully',
+                userToken: action.payload,
+                msg: '',
                 isLoggedIn: true,
             }
         case AUTHENTICATE_USER : 
             return{
                 ...state,
                 loading: false,
-                user: action.payload,
-                msg: 'Logged In Successfully',
+                userToken: action.payload,
+                msg: '',
                 isLoggedIn: true,
             }
         case CLEAR_ERR :
@@ -54,8 +63,50 @@ export default function reducer(state = initState, action){
                 ...state,
                 loading: false,
                 user: null,
+                userToken: null,
                 msg: '',
                 isLoggedIn: false,
+            }
+        case GET_USER_SUCCESS :
+            return{
+                ...state,
+                loading: false,
+                user: action.payload,
+                msg: '',
+                isLoggedIn: true,
+            }
+        case SEARCH_USER_SUCCESS :
+            return{
+                ...state,
+                loading: false,
+                searchedUser: action.payload,
+                msg: '',
+            }
+        case SEARCH_USER_FAILURE :
+            return{
+                ...state,
+                loading: false,
+                searchedUser: null,
+                msg: action.payload,
+            }
+        case ADD_PEOPLE_SUCCESS :
+            return{
+                ...state,
+                loading: false,
+                user: action.payload,
+                msg: '',
+            }
+        case ADD_PEOPLE_FAILURE :
+            return{
+                ...state,
+                loading: false,
+                searchedUser: null,
+                msg: action.payload,
+            }
+        case SET_USER2 :
+            return{
+                ...state,
+                user2: action.payload
             }
         default: return state
     }

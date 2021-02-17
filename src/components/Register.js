@@ -15,7 +15,7 @@ function Register(props) {
   },[]);
 
   useEffect(() => {
-    if(props.user){
+    if(props.userToken){
       history.push("/dashboard");
     }
   });
@@ -24,7 +24,7 @@ function Register(props) {
     e.preventDefault();
     const user = {
       name : e.target.name.value,
-      email : e.target.email.value,
+      username : e.target.username.value,
       password : e.target.password.value,
       re_password : e.target.re_password.value,
     }
@@ -49,7 +49,7 @@ function Register(props) {
                 <input className="form-control" name="name" type="text" placeholder="Name"/>
               </div>
               <div className="form-group">
-                <input className="form-control" name="email" type="email" placeholder="E-mail"/>
+                <input className="form-control" name="username" type="name" placeholder="Username"/>
               </div>
               <div className="form-group">
                 <input className="form-control" name="password" type="password" placeholder="Password"/>

@@ -15,7 +15,8 @@
 }
 
 .chatbox{
-  background-color: white;
+  background-image: url("https://image.shutterstock.com/shutterstock/photos/1143166241/display_1500/stock-vector-background-with-chat-pattern-gallery-speaking-bubble-email-notebook-laptop-cloud-wireless-1143166241.jpg");
+  background-size: cover;
   height: 70vh;
   border-radius: 3px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
@@ -25,15 +26,19 @@
 .msg{
   width: fit-content;
   background-color: skyblue;
-  border-radius: 5px;
+  border-radius: 10px;
+  border-top-left-radius: 0;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
 }
 
 .user-msg{
   background-color: rgb(79, 243, 115);
+  border-radius: 10px;
+  border-top-right-radius: 0;
 }
 
 .msgTime{
+  color: rgb(0, 0, 0, 0.8);
   font-size: xx-small;
   position: relative;
   top: 5px;
@@ -52,4 +57,29 @@
 
 .msg-input-field{
   height: 100%;
+}
+
+.send-btn{
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
+  border-radius: 50%;
+}
+
+.welcome-screen{
+  background-image: url(
+    "https://www.wallpapertip.com/wmimgs/51-517054_whatsapp-background-images-hd.jpg"
+  );
+  background-size: contain;
+  border-radius: 3px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
+  height: 88vh;
+  color: white;
+}
+
+.welcome-img{
+  height: 250px !important;
+  width: 250px !important;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+  border-radius: 50%;
 }
