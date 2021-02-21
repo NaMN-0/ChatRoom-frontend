@@ -7,11 +7,27 @@ import "./chatbox.css"
 import { GoPrimitiveDot } from "react-icons/go"; 
 import { AiOutlineSend } from "react-icons/ai"; 
 
+import { sendMsg, setMsgs } from '../actions/chat';
+
 function ChatBox(props) {
 
-  const { user, user2 } = props;
-  const messages = [];
-  console.log(user2);
+  const { user, user2, messages } = props;
+
+  const sendMsgHandler = (e) => {
+    e.preventDefault();
+    let chatID;
+    if(user._id<=user2._id){
+      chatID = `${user._id}-${user2._id}`;
+    }
+    else{
+      chatID = `${user2._id}-${user._id}`;
+    }
+    const msgText = e.target.msg.value;
+    const author = user._id;
+    if(msgText){
+      props.dispatch(sendMsg(chatID,msgText,author));
+    }
+  }
 
   return (
 		<>
@@ -29,17 +45,17 @@ function ChatBox(props) {
             </div>
             <div className = "bg-blue chatbox p-2 my-2">
               <div className = "row m-0 p-0">
-                {messages.map((item, index) => {
+                {messages && messages.map((item, index) => {
                   return(
-                    (user.roll===item.sender) ? 
-                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1">{item.msg}<span className="msgTime ml-2">{item.time}</span></div></div> : 
-                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1 user-msg float-right">{item.msg}<span className="msgTime ml-2">{item.time}</span></div></div> 
+                    (user._id!==item.author) ? 
+                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1">{item.msgText}<span className="msgTime ml-2">{item.date}</span></div></div> : 
+                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1 user-msg float-right">{item.msgText}<span className="msgTime ml-2">{item.date}</span></div></div> 
                     )}
                 )}
               </div>
             </div>
             <div className = "bg-blue chat-input p-2 m-0">
-              <form className="d-flex align-content-center w-100 m-0" autoComplete="off">
+              <form onSubmit={(e)=>sendMsgHandler(e)} className="d-flex align-content-center w-100 m-0" autoComplete="off">
                 <input className="msg-input-field m-0 px-2 w-100" type="text" name="msg"/>
                 <button className="btn btn-success ml-2 send-btn d-flex align-items-center" action="submit"><AiOutlineSend size={20}/></button>
               </form>
@@ -60,6 +76,7 @@ function ChatBox(props) {
 }
 
 function mapStateToProps(state){
+  console.log(state);
   return {
     ...state,
   }

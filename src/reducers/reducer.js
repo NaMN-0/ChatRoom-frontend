@@ -6,7 +6,8 @@ import { FETCH_FAILURE, FETCH_REQUEST,
     ADD_PEOPLE_SUCCESS, ADD_PEOPLE_FAILURE,
     SET_USER2,
     EDIT_PROFILE_FAILURE, EDIT_PROFILE_SUCCESS,
-    EDIT_DP_FAILURE, EDIT_DP_SUCCESS
+    EDIT_DP_FAILURE, EDIT_DP_SUCCESS,
+    GET_MSG_SUCCESS
  } from '../actions/actionTypes';
 
 const initState = {
@@ -16,7 +17,8 @@ const initState = {
     user2: null,
     msg: "",
     isLoggedIn: false,
-    searchedUser: null
+    searchedUser: null,
+    messages: []
 }
 
 export default function reducer(state = initState, action){
@@ -62,12 +64,14 @@ export default function reducer(state = initState, action){
             }
         case LOGOUT :
             return{
-                ...state,
                 loading: false,
-                user: null,
                 userToken: null,
-                msg: '',
+                user: null,
+                user2: null,
+                msg: "",
                 isLoggedIn: false,
+                searchedUser: null,
+                messages: []
             }
         case GET_USER_SUCCESS :
             return{
@@ -108,7 +112,8 @@ export default function reducer(state = initState, action){
         case SET_USER2 :
             return{
                 ...state,
-                user2: action.payload
+                user2: action.payload,
+                messages: []
             }
         case EDIT_PROFILE_FAILURE :
             return{
@@ -135,6 +140,11 @@ export default function reducer(state = initState, action){
                 loading: false,
                 user: action.payload,
                 msg: "",
+            }
+        case GET_MSG_SUCCESS : 
+            return{
+                ...state,
+                messages: action.payload
             }
         default: return state
     }

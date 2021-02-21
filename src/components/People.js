@@ -8,6 +8,7 @@ import { GoPrimitiveDot } from "react-icons/go";
 import { AiOutlineWechat } from "react-icons/ai"; 
 
 import { setUser2 } from "../actions/user"
+import { setMsgs } from "../actions/chat"
 
 function People(props) {
 
@@ -24,6 +25,16 @@ function People(props) {
 
   const user2Handler = (user2) => {
     props.dispatch(setUser2(user2));
+    if(user && user2){
+      let chatID;
+      if(user._id<=user2._id){
+        chatID = `${user._id}-${user2._id}`;
+      }
+      else{
+        chatID = `${user2._id}-${user._id}`;
+      }
+      props.dispatch(setMsgs(chatID));
+    }
   }
 
   // const people = [user,user,user,user,user,user,user,user,user,user,user,user];
