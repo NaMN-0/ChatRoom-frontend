@@ -4,7 +4,9 @@ import { FETCH_FAILURE, FETCH_REQUEST,
     GET_USER_SUCCESS, 
     SEARCH_USER_SUCCESS, SEARCH_USER_FAILURE,
     ADD_PEOPLE_SUCCESS, ADD_PEOPLE_FAILURE,
-    SET_USER2
+    SET_USER2,
+    EDIT_PROFILE_FAILURE, EDIT_PROFILE_SUCCESS,
+    EDIT_DP_FAILURE, EDIT_DP_SUCCESS
  } from '../actions/actionTypes';
 
 const initState = {
@@ -107,6 +109,32 @@ export default function reducer(state = initState, action){
             return{
                 ...state,
                 user2: action.payload
+            }
+        case EDIT_PROFILE_FAILURE :
+            return{
+                ...state,
+                loading: false,
+                msg: action.payload,
+            }
+        case EDIT_PROFILE_SUCCESS :
+            return{
+                ...state,
+                loading: false,
+                user: action.payload,
+                msg: "",
+            }
+        case EDIT_DP_FAILURE :
+            return{
+                ...state,
+                loading: false,
+                msg: action.payload,
+            }
+        case EDIT_DP_SUCCESS :
+            return{
+                ...state,
+                loading: false,
+                user: action.payload,
+                msg: "",
             }
         default: return state
     }

@@ -10,12 +10,13 @@ import "./profileCard.css"
 function ProfileCard(props) {
 
   const { user } = props;
+  const history = useHistory();
 
   return (
 		<>
       {user && 
         <div className = "bg-blue profileCard p-2 m-2">
-          <button className="btn btn-light float-right settings-btn p-1">
+          <button onClick={()=>history.push("/profile")} className="btn btn-light float-right settings-btn p-1">
             <FcSettings size={30}/>
           </button>
           <div className="row p-0 m-0 py-2">

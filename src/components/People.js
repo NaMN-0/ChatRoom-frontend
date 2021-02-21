@@ -26,6 +26,8 @@ function People(props) {
     props.dispatch(setUser2(user2));
   }
 
+  // const people = [user,user,user,user,user,user,user,user,user,user,user,user];
+
   return (
 		<>
       {user && 
@@ -40,25 +42,27 @@ function People(props) {
             </form>
             <hr/>
           </div>
-          {user.people.map((item, index) => {
-            return(
-              item.name.toLowerCase().includes(curQuery) ? 
-              (
-                <div onClick={() => user2Handler(item)} key={index} className="m-0 p-0">
-                  <div className = "people-item d-flex align-items-center px-3 py-2">
-                    <div className = "user2ImgDiv p-0 my-auto" style={{"backgroundImage":`url(${item.imgUrl})`}}></div>
-                    <div className = "mx-2">{item.name}</div>
-                    {/* <div className = "ml-auto mr-4">
-                      <p className="m-0 p-0 align-items-center">
-                        {item.status ? <span className="online"><GoPrimitiveDot size={15} />Online</span> : <span className="lastSeen">Last Seen at {user.lastSeen}</span>}
-                      </p>
-                    </div> */}
+          <div className="people-list m-0 p-0">
+            {user.people.map((item, index) => {
+              return(
+                item.name.toLowerCase().includes(curQuery) ? 
+                (
+                  <div onClick={() => user2Handler(item)} key={index} className="m-0 p-0">
+                    <div className = "people-item d-flex align-items-center px-3 py-2">
+                      <div className = "user2ImgDiv p-0 my-auto" style={{"backgroundImage":`url(${item.imgUrl})`}}></div>
+                      <div className = "mx-2">{item.name}</div>
+                      {/* <div className = "ml-auto mr-4">
+                        <p className="m-0 p-0 align-items-center">
+                          {item.status ? <span className="online"><GoPrimitiveDot size={15} />Online</span> : <span className="lastSeen">Last Seen at {user.lastSeen}</span>}
+                        </p>
+                      </div> */}
+                    </div>
+                    <hr className="m-0 p-0"/>
                   </div>
-                  <hr className="m-0 p-0"/>
-                </div>
-              ) : (<></>)
-            );
-          })}
+                ) : (<></>)
+              );
+            })}
+          </div>
         </div>
       }
     </>

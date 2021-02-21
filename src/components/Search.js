@@ -19,7 +19,9 @@ function Search(props) {
   const searchHandler = (e) => {
     e.preventDefault();
     const query = e.target.search.value;
-    props.dispatch(searchUser(query));
+    if(query){
+      props.dispatch(searchUser(query));
+    }
     e.target.reset();
   }
 

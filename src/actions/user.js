@@ -1,5 +1,12 @@
 import axios from 'axios';
-import { FETCH_REQUEST, FETCH_FAILURE, GET_USER_SUCCESS, SEARCH_USER_SUCCESS, SEARCH_USER_FAILURE, ADD_PEOPLE_SUCCESS, ADD_PEOPLE_FAILURE, SET_USER2 } from './actionTypes';
+import { FETCH_REQUEST, FETCH_FAILURE, 
+    GET_USER_SUCCESS, 
+    SEARCH_USER_SUCCESS, SEARCH_USER_FAILURE, 
+    ADD_PEOPLE_SUCCESS, ADD_PEOPLE_FAILURE, 
+    SET_USER2,
+    EDIT_PROFILE_FAILURE, EDIT_PROFILE_SUCCESS,
+    EDIT_DP_FAILURE, EDIT_DP_SUCCESS
+ } from './actionTypes';
 import { apiUrls } from '../helpers/urls';
 import jwt from "jsonwebtoken";
 
@@ -88,10 +95,10 @@ export function addPeopleSuccess(user){
     }
 }
 
-export function addPeopleFailure(user){
+export function addPeopleFailure(err){
     return{
         type: ADD_PEOPLE_FAILURE,
-        payload: user
+        payload: err
     }
 }
 
@@ -121,5 +128,85 @@ export function setUser2(user){
     return{
         type: SET_USER2,
         payload: user
+    }
+}
+
+export function editProfileFailure(err){
+    return{
+        type: EDIT_PROFILE_FAILURE,
+        payload: err
+    }
+}
+
+export function editProfileSuccess(user){
+    return{
+        type: EDIT_PROFILE_SUCCESS,
+        payload: user
+    }
+}
+
+export function editProfile(id,change){
+    return function(dispatch){
+        let url = apiUrls.editProfile();
+        const json = {
+            id,
+            change
+        }
+        dispatch(fetchRequest());
+        axios
+            .put(url,json)
+            .then(res => {
+                if(res.data.msg){
+                    let err = res.data.msg;
+                    dispatch(editProfileFailure(err));
+                }
+                else{
+                    const user = res.data;
+                    dispatch(editProfileSuccess(user));
+                }
+            })
+            .catch(err => {
+                dispatch(editProfileFailure(err.msg));
+            })
+    }
+}
+
+export function editDPFailure(err){
+    return{
+        type: EDIT_DP_FAILURE,
+        payload: err
+    }
+}
+
+export function editDPSuccess(user){
+    return{
+        type: EDIT_DP_SUCCESS,
+        payload: user
+    }
+}
+
+export function updateDP(data){
+    return function(dispatch){
+        let url = apiUrls.editDP();
+        dispatch(fetchRequest());
+        axios
+            .post(url,data,{
+                headers: {
+                    "Content-type": "multipart/form-data"
+                }
+            })
+            .then(res => {
+                if(res.data.msg){
+                    let err = res.data.msg;
+                    dispatch(editDPFailure(err));
+                }
+                else{
+                    const user = res.data;
+                    dispatch(editDPSuccess(user));
+                }
+            })
+            .catch(err => {
+                dispatch(editDPFailure(err.msg));
+            })
     }
 }

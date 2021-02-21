@@ -1,0 +1,47 @@
+.profileEdit{
+  background-color: white;
+  min-height: 47vh;
+  border-radius: 3px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
+}
+
+.profileEdit-container{
+  height: 88vh;
+}
+
+.profileImgEditDiv{
+  height: 90px !important;
+  width: 90px !important;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+  border-radius: 50%;
+}
+
+.edit-pic{
+  background-color: rgb(26,132,120);
+  color: white;
+  border-radius: 50%;
+  position: relative;
+  left: 60px;
+  top: 60px;
+}
+.edit-pic:hover{
+  cursor: pointer;
+}
+
+.edit-pencil{
+  color: rgb(26,132,120);
+  border-radius: 50%;
+}
+
+.edit-input{
+  background-color: rgb(219, 211, 211, 0.5);
+  border: none;
+  border-bottom: black 1px solid;
+  border-radius: 3px;
+}
+
+.edit-input:focus{
+  outline: none;
+}

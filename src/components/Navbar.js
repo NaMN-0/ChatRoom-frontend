@@ -26,15 +26,15 @@ function Navbar(props) {
         <div className="collapse navbar-collapse text-center" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <a className="nav-link" href="#">Dashboard <span className="sr-only">(current)</span></a>
+              <a className="nav-link" onClick={()=>history.push("dashboard")}>Dashboard <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Settings</a>
+              <a className="nav-link" onClick={()=>history.push("settings")}>Settings</a>
             </li>
           </ul>
           <ul className="nav ml-auto navbar-nav navbar-right">
             <li className="nav-item">
-              <a onClick={()=>logoutHandler()} className="nav-link" href="#">Logout</a>
+              <a onClick={()=>logoutHandler()} className="nav-link">Logout</a>
             </li>
           </ul>
         </div>
