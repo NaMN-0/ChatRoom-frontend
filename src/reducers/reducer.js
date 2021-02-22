@@ -74,6 +74,8 @@ export default function reducer(state = initState, action){
                 messages: []
             }
         case GET_USER_SUCCESS :
+            console.log("old : ", state.user);
+            console.log("new : ", action.payload);
             return{
                 ...state,
                 loading: false,

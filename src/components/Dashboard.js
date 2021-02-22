@@ -14,17 +14,23 @@ import "./dashboard.css"
 
 function Dashboard(props) {
 
+  const { user } = props;
+
+  let token = props.userToken;
+
+  console.log("user : ", user);
+
   useEffect(() => {
-    if(props.userToken && !props.user){
+    console.log("dashboard");
+    if(!user){
+      console.log("token : ", props.userToken);
       props.dispatch(getUser(props.userToken._id));
     }
-  });
-
-  const { user } = props;
+  },[user]);
 
   return (
 		<>
-      <Navbar/>
+      {/* <Navbar/>
       <div className = "dashboard">
         <div className = "row p-0 m-0 bg-grey">
           <div className = "col-lg-3 left p-0 m-0">
@@ -38,7 +44,7 @@ function Dashboard(props) {
             <People/>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
 	);
 }

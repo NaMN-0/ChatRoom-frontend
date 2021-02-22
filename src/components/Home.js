@@ -9,6 +9,7 @@ function Home(props) {
   const history = useHistory();
 
   useEffect(() => {
+    console.log("home")
     if(props.userToken){
       history.push("/dashboard");
     }

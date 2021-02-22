@@ -16,6 +16,10 @@ function Search(props) {
 
   const { user } = props;
 
+  useEffect(() => {
+    console.log("search");
+  },[]);
+
   const searchHandler = (e) => {
     e.preventDefault();
     const query = e.target.search.value;

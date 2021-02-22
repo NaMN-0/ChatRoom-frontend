@@ -2,6 +2,9 @@ const root = "http://localhost:8000/api"
 
 export const apiUrls = {
     
+    backendAPI: () => `http://localhost:8000`,
+
+
     getMsgs: () => `${root}/chat/getMsgs`,
     sendMsg: () => `${root}/chat/sendMsg`,
     editDP: () => `${root}/files/uploadDP`,

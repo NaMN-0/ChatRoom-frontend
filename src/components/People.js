@@ -16,6 +16,10 @@ function People(props) {
 
   const { user } = props;
 
+  useEffect(() => {
+    console.log("people");
+  },[]);
+
   const [curQuery,setCurQuery] = useState("");
 
   const handleQueryChange = (e) => {

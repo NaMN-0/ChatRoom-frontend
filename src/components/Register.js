@@ -15,6 +15,7 @@ function Register(props) {
   },[]);
 
   useEffect(() => {
+    console.log("register")
     if(props.userToken){
       history.push("/dashboard");
     }

@@ -15,6 +15,7 @@ function Login(props) {
   },[]);
 
   useEffect(() => {
+    console.log("login")
     if(props.userToken){
       history.push("/dashboard");
     }

@@ -10,6 +10,10 @@ function Navbar(props) {
 
   const history = useHistory();
 
+  useEffect(() => {
+    console.log("navbar");
+  },[]);
+
   const logoutHandler = () => {
     localStorage.clear();
     props.dispatch(logout());

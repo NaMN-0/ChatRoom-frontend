@@ -13,6 +13,10 @@ function ChatBox(props) {
 
   const { user, user2, messages } = props;
 
+  useEffect(() => {
+    console.log("chatbox");
+  },[]);
+
   const sendMsgHandler = (e) => {
     e.preventDefault();
     let chatID;
@@ -76,7 +80,6 @@ function ChatBox(props) {
 }
 
 function mapStateToProps(state){
-  console.log(state);
   return {
     ...state,
   }

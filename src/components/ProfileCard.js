@@ -9,6 +9,10 @@ import "./profileCard.css"
 
 function ProfileCard(props) {
 
+  useEffect(() => {
+    console.log("profile-card");
+  },[]);
+
   const { user } = props;
   const history = useHistory();
 

@@ -10,6 +10,8 @@ import { FETCH_REQUEST, FETCH_FAILURE,
 import { apiUrls } from '../helpers/urls';
 import jwt from "jsonwebtoken";
 
+import { socket } from "../helpers/socket";
+
 export function fetchRequest(){
     return{
         type: FETCH_REQUEST,
@@ -39,14 +41,18 @@ export function getUser(user_id){
             .then(res => {
                 if(res.data){
                     const user = res.data;
+                    console.log("success");
+                    socket.emit("login","Login Success");
                     dispatch(getUserSuccess(user));
                 }
                 else{
                     let err = res.data.msg;
+                    console.log("failure1");
                     dispatch(fetchFailure(err));
                 }
             })
             .catch(err => {
+                console.log("failure2");
                 dispatch(fetchFailure(err.msg));
             })
     }

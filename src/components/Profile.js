@@ -19,6 +19,10 @@ import { editProfile } from "../actions/user";
 
 function Profile(props) {
 
+  useEffect(() => {
+    console.log("profile");
+  },[]);
+
   const { user } = props;
   const history = useHistory();
 
@@ -30,6 +34,7 @@ function Profile(props) {
   const [file,setFile] = useState(null);
 
   const handlePreview = (e) => {
+    
     e.preventDefault();
     if(e.target.files.length){
       const file = e.target.files[0];
