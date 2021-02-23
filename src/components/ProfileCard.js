@@ -6,6 +6,7 @@ import { GoPrimitiveDot } from "react-icons/go";
 import { FcSettings } from "react-icons/fc"; 
 
 import "./profileCard.css"
+import { dateConvert } from "../helpers/dateTime";
 
 function ProfileCard(props) {
 
@@ -27,9 +28,9 @@ function ProfileCard(props) {
             <div className = "profileImgDiv p-0 ml-3" style={{"backgroundImage":`url(${user.imgUrl})`}}></div>
             <div className = "col-6 my-auto align-items-center">
               <h5 className="m-0 p-0">{user.username}</h5>
-              {/* <p className="m-0 p-0 align-items-center">
-                {user.status ? <span className="online"><GoPrimitiveDot size={15} />Online</span> : <span className="lastSeen">Last Seen at {user.lastSeen}</span>}
-              </p> */}
+              <p className="m-0 p-0 align-items-center joined">
+                <span>{`Joined on ${dateConvert(user.dateJoined)}`}</span>
+              </p>
             </div>
           </div>
           <>

@@ -2,3 +2,7 @@
   background-color: chocolate;
   min-height: 8vh;
 }
+
+.navbar .link:hover{
+  cursor: pointer;
+}

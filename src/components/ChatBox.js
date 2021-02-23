@@ -8,14 +8,31 @@ import { GoPrimitiveDot } from "react-icons/go";
 import { AiOutlineSend } from "react-icons/ai"; 
 
 import { sendMsg, setMsgs } from '../actions/chat';
+import { socket } from "../helpers/socket";
+import { timeConvert } from "../helpers/dateTime";
 
 function ChatBox(props) {
 
   const { user, user2, messages } = props;
-
+  const [chat, setChat] = useState([]);
   useEffect(() => {
     console.log("chatbox");
   },[]);
+
+  useEffect(() => {
+    socket.on('msgReceive', (data) => {
+      console.log("msg received : ", data);
+      console.log("chat : ", chat);
+      setChat([...chat,data.msg]);
+    })
+    var scrollDiv = document.querySelector(".chatbox");
+    if(scrollDiv){
+      scrollDiv.scrollTop = scrollDiv.scrollHeight - scrollDiv.clientHeight;
+    }
+    return () => {
+      socket.off('msgReceive');
+    }
+  },[chat]);
 
   const sendMsgHandler = (e) => {
     e.preventDefault();
@@ -27,10 +44,12 @@ function ChatBox(props) {
       chatID = `${user2._id}-${user._id}`;
     }
     const msgText = e.target.msg.value;
-    const author = user._id;
+    const author = user;
+    const receiver = user2;
     if(msgText){
-      props.dispatch(sendMsg(chatID,msgText,author));
+      props.dispatch(sendMsg(chatID,msgText,author,receiver));
     }
+    e.target.reset();
   }
 
   return (
@@ -47,13 +66,20 @@ function ChatBox(props) {
                 </p>
               </div> */}
             </div>
-            <div className = "bg-blue chatbox p-2 my-2">
+            <div className = "chatbox p-2 my-2">
               <div className = "row m-0 p-0">
                 {messages && messages.map((item, index) => {
                   return(
-                    (user._id!==item.author) ? 
-                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1">{item.msgText}<span className="msgTime ml-2">{item.date}</span></div></div> : 
-                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1 user-msg float-right">{item.msgText}<span className="msgTime ml-2">{item.date}</span></div></div> 
+                    (user._id!==item.user1ID) ? 
+                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> : 
+                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1 user-msg float-right">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> 
+                    )}
+                )}
+                {chat && chat.map((item, index) => {
+                  return(
+                    (user._id!==item.user1) ? 
+                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> : 
+                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1 user-msg float-right">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> 
                     )}
                 )}
               </div>

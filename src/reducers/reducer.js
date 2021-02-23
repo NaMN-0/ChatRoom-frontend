@@ -7,7 +7,8 @@ import { FETCH_FAILURE, FETCH_REQUEST,
     SET_USER2,
     EDIT_PROFILE_FAILURE, EDIT_PROFILE_SUCCESS,
     EDIT_DP_FAILURE, EDIT_DP_SUCCESS,
-    GET_MSG_SUCCESS
+    GET_MSG_SUCCESS,
+    GET_PEOPLE_DETAILS_SUCCESS
  } from '../actions/actionTypes';
 
 const initState = {
@@ -18,6 +19,7 @@ const initState = {
     msg: "",
     isLoggedIn: false,
     searchedUser: null,
+    peopleList: [],
     messages: []
 }
 
@@ -147,6 +149,12 @@ export default function reducer(state = initState, action){
             return{
                 ...state,
                 messages: action.payload
+            }
+        case GET_PEOPLE_DETAILS_SUCCESS : 
+            console.log("old one : ", state.peopleList);
+            return{
+                ...state,
+                peopleList: action.payload
             }
         default: return state
     }

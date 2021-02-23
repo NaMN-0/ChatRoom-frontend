@@ -6,8 +6,8 @@
 }
 
 .user2ImgDiv{
-  height: 40px !important;
-  width: 40px !important;
+  height: 45px !important;
+  width: 45px !important;
   background-size: cover;
   background-position: center;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
@@ -21,6 +21,10 @@
   border-radius: 3px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
   overflow-y: scroll;
+}
+
+.chatbox::-webkit-scrollbar {
+  display: none;
 }
 
 .msg{

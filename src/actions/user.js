@@ -5,7 +5,8 @@ import { FETCH_REQUEST, FETCH_FAILURE,
     ADD_PEOPLE_SUCCESS, ADD_PEOPLE_FAILURE, 
     SET_USER2,
     EDIT_PROFILE_FAILURE, EDIT_PROFILE_SUCCESS,
-    EDIT_DP_FAILURE, EDIT_DP_SUCCESS
+    EDIT_DP_FAILURE, EDIT_DP_SUCCESS,
+    GET_PEOPLE_DETAILS_SUCCESS
  } from './actionTypes';
 import { apiUrls } from '../helpers/urls';
 import jwt from "jsonwebtoken";
@@ -35,15 +36,45 @@ export function getUserSuccess(user){
 export function getUser(user_id){
     return function(dispatch){
         let url = apiUrls.getUser()+`?id=${user_id}`;
-        dispatch(fetchRequest());
+        // dispatch(fetchRequest());
         axios
             .get(url)
             .then(res => {
                 if(res.data){
                     const user = res.data;
                     console.log("success");
-                    socket.emit("login","Login Success");
+                    socket.emit("login",user_id);
+                    dispatch(getPeopleDetails(user.people));
                     dispatch(getUserSuccess(user));
+                }
+                else{
+                    let err = res.data.msg;
+                    console.log("failure1");
+                    dispatch(fetchFailure(err));
+                }
+            })
+            .catch(err => {
+                console.log("failure2");
+                dispatch(fetchFailure(err.msg));
+            })
+    }
+}
+export function getPeopleDetailSuccess(peopleDetailList){
+    return {
+        type: GET_PEOPLE_DETAILS_SUCCESS,
+        payload: peopleDetailList
+    }
+}
+
+export function getPeopleDetails(peopleList){
+    return function(dispatch){
+        let url = apiUrls.getPeopleDetails();
+        axios
+            .post(url, peopleList)
+            .then(res => {
+                if(res.data){
+                    const peopleDetailList = res.data;
+                    dispatch(getPeopleDetailSuccess(peopleDetailList));
                 }
                 else{
                     let err = res.data.msg;
@@ -122,6 +153,7 @@ export function addPeople(id1,id2){
                 else{
                     const user = res.data;
                     dispatch(addPeopleSuccess(user));
+                    dispatch(getPeopleDetails(user.people));
                 }
             })
             .catch(err => {

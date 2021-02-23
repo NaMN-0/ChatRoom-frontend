@@ -4,7 +4,8 @@ export const apiUrls = {
     
     backendAPI: () => `http://localhost:8000`,
 
-
+    
+    getPeopleDetails: () => `${root}/user/peopleDetail`,
     getMsgs: () => `${root}/chat/getMsgs`,
     sendMsg: () => `${root}/chat/sendMsg`,
     editDP: () => `${root}/files/uploadDP`,

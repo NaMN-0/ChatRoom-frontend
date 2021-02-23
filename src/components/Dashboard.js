@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Link, Router, useHistory } from "react-router-dom";
 
-import { getUser } from "../actions/user.js";
+import { getUser, getPeopleDetails } from "../actions/user.js";
 
 import Navbar from "./Navbar";
 import ProfileCard from "./ProfileCard";
@@ -14,9 +14,10 @@ import "./dashboard.css"
 
 function Dashboard(props) {
 
-  const { user } = props;
+  const { user, peopleList } = props;
 
   let token = props.userToken;
+  let list = props.peopleList;
 
   console.log("user : ", user);
 
@@ -26,11 +27,11 @@ function Dashboard(props) {
       console.log("token : ", props.userToken);
       props.dispatch(getUser(props.userToken._id));
     }
-  },[user]);
+  },[user,peopleList]);
 
   return (
 		<>
-      {/* <Navbar/>
+      <Navbar/>
       <div className = "dashboard">
         <div className = "row p-0 m-0 bg-grey">
           <div className = "col-lg-3 left p-0 m-0">
@@ -44,12 +45,13 @@ function Dashboard(props) {
             <People/>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
 	);
 }
 
 function mapStateToProps(state){
+  console.log("new one : ", state.peopleList);
   return {
     ...state,
   }

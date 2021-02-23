@@ -4,3 +4,15 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
   height: 88vh;
 }
+
+.people-list{
+  height: 65vh;
+  overflow-y: scroll;
+}
+.people-list::-webkit-scrollbar {
+  display: none;
+}
+
+.people .link-hover:hover{
+  cursor: pointer;
+}

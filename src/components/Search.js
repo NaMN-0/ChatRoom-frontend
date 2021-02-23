@@ -62,7 +62,7 @@ function Search(props) {
                 </div>
                 {props.searchedUser.username===props.user.username ?
                   <></> :
-                  (props.user.people.filter(item => item._id===props.searchedUser._id).length===0) ?
+                  (props.user.people.filter(item => item===props.searchedUser._id).length===0) ?
                   <button onClick={()=>starPeople()} className="btn btn-light ml-2 search-btn p-1"><AiOutlineUserAdd size={30}/></button> :
                   <button className="disabled btn btn-light ml-2 search-btn p-1"><TiTickOutline size={30}/></button>
                 }
