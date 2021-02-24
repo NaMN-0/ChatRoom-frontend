@@ -15,16 +15,23 @@ import "./dPEditForm.css";
 import "./profile.css"
 
 import { updateDP } from "../actions/user.js";
-import { editProfile } from "../actions/user";
+import { getUser, editProfile } from "../actions/user";
 
 function Profile(props) {
 
+  const history = useHistory();
   useEffect(() => {
     console.log("profile");
   },[]);
 
   const { user } = props;
-  const history = useHistory();
+  let token = props.userToken;
+
+  useEffect(() => {
+    if(!token){
+      history.push("dashboard");
+    }
+  },[user]);
 
   const [name, setName] = useState(user ? user.name : null);
   const [bio, setBio] = useState(user ? user.bio : null);
@@ -97,14 +104,14 @@ function Profile(props) {
 		<> 
       <NavBar/>
       {DPForm && 
-      <div className="black-sheet d-flex justify-content-center align-items-center">
-        <div className="dpForm mx-auto p-5">
+      <div className="black-sheet h-100 d-flex justify-content-center align-items-center">
+        <div className="dpForm mx-auto py-5 px-2 px-md-5">
           <button onClick={()=>setDPForm(false)} className="btn btn-dark m-0 p-1 close-btn">
             <AiOutlineClose size={30}/>
           </button>
           <form onSubmit={(e)=>handleSubmit(e)} encType="multipart/form-data">
-            <input onChange={(e)=>handlePreview(e)} type="file" name="file"/>
-            <button action="submit" className="btn btn-light btn-upload m-0 p-1">
+            <input className="img-input" onChange={(e)=>handlePreview(e)} type="file" name="file"/>
+            <button action="submit" className="btn btn-dark btn-upload m-0 p-1">
               <TiTickOutline size={30}/>
             </button>
           </form>
@@ -135,13 +142,13 @@ function Profile(props) {
                     <>
                       <input onChange={(e)=>setName(e.target.value)} type="text" name="name" value={name} className="col-10 my-auto px-1 edit-input"/>
                       <div className="col-1 p-0 m-0">
-                        <TiTickOutline onClick={()=>editNameHandler()} className="btn btn-light m-0 p-1 edit-pencil" size={30}/>
+                        <TiTickOutline onClick={()=>editNameHandler()} className="btn btn-light m-0 p-1 ml-2 edit-pencil" size={30}/>
                       </div>
                     </> :
                     <>
                       <p className="col-10 px-1 my-auto">{name}</p>
                       <div className="col-1 p-0 m-0">
-                        <MdEdit onClick={()=>editNameHandler()} className="btn btn-light m-0 p-1 edit-pencil" size={30}/>
+                        <MdEdit onClick={()=>editNameHandler()} className="btn btn-light m-0 p-1 ml-2 edit-pencil" size={30}/>
                       </div>
                     </>
                   }
@@ -151,22 +158,22 @@ function Profile(props) {
                   <AiOutlineInfoCircle className="col-1 m-0 p-0" size={25}/>
                   {bioForm ? 
                     <>
-                      <input onChange={(e)=>setBio(e.target.value)} type="text" name="bio" value={bio} className="col-10 my-auto px-1 edit-input"/>
+                      <textarea onChange={(e)=>setBio(e.target.value)} type="text" name="bio" value={bio} className="col-10 my-auto px-1 edit-input"/>
                       <div className="col-1 p-0 m-0">
-                        <TiTickOutline onClick={()=>editBioHandler()} className="btn btn-light m-0 p-1 edit-pencil" size={30}/>
+                        <TiTickOutline onClick={()=>editBioHandler()} className="btn btn-light m-0 ml-2 p-1 edit-pencil" size={30}/>
                       </div>
                     </> :
                     <>
                       <p className="col-10 px-1 my-auto">{bio}</p>
                       <div className="col-1 p-0 m-0">
-                        <MdEdit onClick={()=>editBioHandler()} className="btn btn-light m-0 p-1 edit-pencil" size={30}/>
+                        <MdEdit onClick={()=>editBioHandler()} className="btn btn-light m-0 p-1 ml-2 edit-pencil" size={30}/>
                       </div>
                     </>
                   }
                 </div>
+                <hr/>
               </div>
             </>
-            <hr/>
           </div>
         </div>
       }

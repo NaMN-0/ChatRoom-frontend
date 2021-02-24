@@ -1,5 +1,13 @@
-.chat-header{
+.chatBox{
+  background-image: linear-gradient(#232526,#414345);
+  color: white;
+}
+
+.chatBox hr{
   background-color: white;
+}
+
+.chat-header{
   height: 8vh;
   border-radius: 3px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
@@ -15,8 +23,6 @@
 }
 
 .chatbox{
-  background-image: url("https://image.shutterstock.com/shutterstock/photos/1143166241/display_1500/stock-vector-background-with-chat-pattern-gallery-speaking-bubble-email-notebook-laptop-cloud-wireless-1143166241.jpg");
-  background-size: cover;
   height: 70vh;
   border-radius: 3px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
@@ -49,17 +55,12 @@
 }
 
 .chat-input{
-  background-color: white;
   height: 8vh;
   border-radius: 3px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
 }
 
 .chat-input form{
-  height: 100%;
-}
-
-.msg-input-field{
   height: 100%;
 }
 

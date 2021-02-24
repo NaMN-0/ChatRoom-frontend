@@ -1,5 +1,7 @@
 .dashboard{
+  background-image: radial-gradient(#E6DADA,#274046);
   min-height: 92vh;
+  padding-top: 8vh;
 }
 
 .dashboard .left{
@@ -10,4 +12,8 @@
 }
 .dashboard .right{
   min-height: 92vh;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

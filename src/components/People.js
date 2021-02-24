@@ -43,13 +43,14 @@ function People(props) {
   }
 
   // const peopleList1 = [user,user,user,user,user,user,user,user,user,user,user,user];
+  // const peopleList1 = [];
 
   return (
 		<>
       {user && 
-        <div className="m-2 people">
+        <div className="mt-2 people">
           <div className = "people-header text-center w-100 pt-3">
-            <h3 className="d-flex justify-content-center align-items-center"><AiOutlineWechat size={40}/> <span className="mx-2">Starred People</span></h3>
+            <h3 className="d-flex justify-content-center align-items-center"><AiOutlineWechat size={40}/> <span className="mx-2">Starred People ({peopleList && peopleList.length})</span></h3>
           </div>
           <hr/>
           <div className = "p-0 m-0 px-3">
@@ -59,6 +60,16 @@ function People(props) {
           </div>
           <hr/>
           <div className="people-list m-0 p-0">
+            {peopleList && peopleList.length===0 && 
+              <div className="empty-people-list text-center m-2">
+                <p>
+                  No one to display yet!
+                </p>
+                <p>
+                  search "NaMN" in Find People
+                </p>
+              </div>
+            }
             {peopleList && peopleList.map((item, index) => {
               return(
                 item.name.toLowerCase().includes(curQuery) ? 

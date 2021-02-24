@@ -27,8 +27,17 @@
 .register{
   min-height: 100vh;
 }
-
+.register hr{
+  background-color: white;
+}
 /*Login*/
 .login{
   min-height: 100vh;
+}
+.login hr{
+  background-color: white;
+}
+.App{
+  background-image: linear-gradient(#232526,#414345);
+  color: white;
 }

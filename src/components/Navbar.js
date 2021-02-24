@@ -22,14 +22,14 @@ function Navbar(props) {
 
   return (
 		<>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand link ml-1" onClick={()=>{history.push("/dashboard")}}>Title</a>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+        <a className="navbar-brand link ml-1" onClick={()=>{history.push("/dashboard")}}>ChatRoom</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse text-center" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item active">
+            <li className="nav-item">
               <a className="nav-link link" onClick={()=>history.push("dashboard")}>Dashboard <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">

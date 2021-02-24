@@ -39,7 +39,7 @@ function Register(props) {
         <div className = "row p-3 text-center w-100">
           <div className = "col-lg-2"></div>
           <div className = "col-lg-10 w-100 d-flex">
-            <button className="btn btn-light back-btn" onClick={()=>{history.push("/")}}><BiArrowBack size={25}/></button>
+            <button className="btn btn-dark back-btn" onClick={()=>{history.push("/")}}><BiArrowBack size={25}/></button>
           </div>
           <div className = "col-lg-3"></div>
           <div className = "col-lg-6">
@@ -60,12 +60,12 @@ function Register(props) {
               </div>
               <p className="msg">{props.msg}</p>
               {props.loading && <p>Loading</p>}
-              <button className="float-left btn btn-dark mb-2" action="submit">Register</button>
+              <button className="float-left btn btn-light mb-2" action="submit">Register</button>
             </form>
             <br/>
             <hr/>
             <p>Already have an account?</p>
-            <button className="btn btn-dark" onClick = {() => {history.push("/login")}}>Login</button>
+            <button className="btn btn-light" onClick = {() => {history.push("/login")}}>Login</button>
           </div>
         </div>
       </div>

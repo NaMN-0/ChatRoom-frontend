@@ -1,12 +1,20 @@
 .profileEdit{
-  background-color: white;
+  background-image: linear-gradient(#232526,#414345);
+  color: white;
   min-height: 47vh;
+  padding-top: 50vh;
   border-radius: 3px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
 }
 
+.profileEdit hr{
+  background-color: white;
+  height: 1px;
+}
+
 .profileEdit-container{
-  height: 88vh;
+  background-image: radial-gradient(#E6DADA,#274046);
+  height: 100vh;
 }
 
 .profileImgEditDiv{
@@ -16,6 +24,16 @@
   background-position: center;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
   border-radius: 50%;
+}
+
+.dpForm{
+  height: auto;
+  background-image: linear-gradient(#F2F2F2,#EAEAEA);
+}
+
+.dpForm hr{
+  background-image: linear-gradient(#232526,#414345);
+  height: 1px;
 }
 
 .edit-pic{
@@ -44,4 +62,8 @@
 
 .edit-input:focus{
   outline: none;
+}
+
+.img-input{
+  width: 260px;
 }

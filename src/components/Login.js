@@ -37,7 +37,7 @@ function Login(props) {
         <div className = "row px-3 py-0 text-center w-100">
           <div className = "col-lg-2"></div>
           <div className = "col-lg-10 w-100 d-flex">
-            <button className="btn btn-light back-btn" onClick={()=>{history.push("/")}}><BiArrowBack size={25}/></button>
+            <button className="btn btn-dark back-btn" onClick={()=>{history.push("/")}}><BiArrowBack size={25}/></button>
           </div>
           <div className = "col-lg-3"></div>
           <div className = "col-lg-6">
@@ -52,12 +52,12 @@ function Login(props) {
               </div>
               <p className="msg">{props.msg}</p>
               {props.loading && <p>Loading</p>}
-              <button className="float-left btn btn-dark mb-2" action="submit">Login</button>
+              <button className="float-left btn btn-light mb-2" action="submit">Login</button>
             </form>
             <br/>
             <hr/>
             <p>New User?</p>
-            <button className="btn btn-dark" onClick = {() => {history.push("/register")}}>Register</button>
+            <button className="btn btn-light" onClick = {() => {history.push("/register")}}>Register</button>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 .navbar{
-  background-color: chocolate;
+  position: fixed;
   min-height: 8vh;
+  z-index: 50;
 }
 
 .navbar .link:hover{

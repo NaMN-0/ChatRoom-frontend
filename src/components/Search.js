@@ -44,7 +44,7 @@ function Search(props) {
           <div className = "p-0 m-0 px-3">
             <form onSubmit={(e)=>searchHandler(e)} className="w-100 m-0 d-flex" required autoComplete="off">
               <input className="search-input-field input w-100 m-0 px-4 py-2" type="text" placeholder="Type the username..." name="search"/>
-              <button action="submit" className="btn btn-light ml-2 search-btn p-1"><AiOutlineSearch size={30}/></button>
+              <button action="submit" className="btn btn-dark ml-2 search-btn p-1"><AiOutlineSearch size={30}/></button>
             </form>
             <hr/>
           </div>

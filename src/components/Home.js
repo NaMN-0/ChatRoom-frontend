@@ -20,17 +20,21 @@ function Home(props) {
       <div className = "home container-sm d-flex align-items-center">
         <div className = "row row1 p-3">
           <div className = "col-lg-6 col-md-12 col-sm-12 mb-4">
-            <h1 className = "display-4">Title</h1>
+            <h1 className = "display-4">ChatRoom</h1>
             <h2>Here Goes the tagline</h2>
             <p>
                 A random paragraph can also be an excellent way for a writer to tackle writers' block. Writing block can often happen due to being stuck with a current project that the writer is trying to complete. 
             </p>
             <hr/>
             <h5>Join Site Now</h5>
-            <button className="btn btn-dark m-1 px-5" onClick = {() => {history.push("/login")}}>Login</button>
-            <button className="btn btn-dark m-1 px-5" onClick = {() => {history.push("/register")}}>Register</button>
+            <button className="btn btn-light m-1 px-5" onClick = {() => {history.push("/login")}}>Login</button>
+            <button className="btn btn-light m-1 px-5" onClick = {() => {history.push("/register")}}>Register</button>
           </div>
-          <div className = "col-lg-6 col-md-12 col-sm-12 right-side">
+          <div className = "m-0 p-0 col-lg-6 col-md-12 col-sm-12 right-side d-flex align-items-center">
+            <div className="w-100 text-center">
+              <h1 className = "display-4">ChatRoom</h1>
+              <h4 className="display-5">here goes the tagline</h4>
+            </div>
           </div>
         </div>
       </div>

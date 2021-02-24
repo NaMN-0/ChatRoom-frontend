@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import { Link, Router, useHistory } from "react-router-dom";
 
 import { GoPrimitiveDot } from "react-icons/go"; 
-import { FcSettings } from "react-icons/fc"; 
+import { BiNotepad } from "react-icons/bi"; 
+import { MdSettings } from "react-icons/md"; 
+import { FaUserCircle } from "react-icons/fa"; 
 
 import "./profileCard.css"
 import { dateConvert } from "../helpers/dateTime";
@@ -21,8 +23,8 @@ function ProfileCard(props) {
 		<>
       {user && 
         <div className = "bg-blue profileCard p-2 m-2">
-          <button onClick={()=>history.push("/profile")} className="btn btn-light float-right settings-btn p-1">
-            <FcSettings size={30}/>
+          <button onClick={()=>history.push("/profile")} className="btn btn-dark float-right settings-btn p-1">
+            <MdSettings size={30}/>
           </button>
           <div className="row p-0 m-0 py-2">
             <div className = "profileImgDiv p-0 ml-3" style={{"backgroundImage":`url(${user.imgUrl})`}}></div>
@@ -35,15 +37,16 @@ function ProfileCard(props) {
           </div>
           <>
             <div className = "col-12">
-              <hr/>
+              <hr className="w-100"/>
               <p>
+                <FaUserCircle className="mb-1 mr-2" size={20}/>
                 {user.name}
                 <br/>
+                <BiNotepad className="mb-1 mr-2" size={20}/>
                 {user.bio}
               </p>
             </div>
           </>
-          <hr/>
         </div>
       }
     </>
