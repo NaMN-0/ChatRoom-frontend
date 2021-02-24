@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import reducer from './reducers/reducer';
 import thunk from 'redux-thunk'
-import { HashRouter } from 'react-router-dom';
 
 const store = createStore(
   reducer,
@@ -18,9 +17,7 @@ const store = createStore(
 ReactDOM.render(
   <React.StrictMode>
     <Provider store = {store}>
-      <HashRouter>
         <App />
-      </HashRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

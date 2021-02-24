@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Component } from "react";
 import './App.css';
 
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import { authenticateUser } from "./actions/auth.js";
@@ -41,7 +41,7 @@ function App(props) {
   
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/login" component={Login}/>
@@ -49,7 +49,7 @@ function App(props) {
           <Route exact path="/profile" component={Profile}/>
           <PrivateRoute exact path="/dashboard" component={Dashboard} isLoggedIn={props.isLoggedIn}/>
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
