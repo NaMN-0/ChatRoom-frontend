@@ -1,8 +1,8 @@
-const root = "http://chatroom-0.herokuapp.com/api"
+const root = "http://chatroom-backend-0.herokuapp.com/api"
 
 export const apiUrls = {
     
-    backendAPI: () => `http://chatroom-0.herokuapp.com`,
+    backendAPI: () => `http://chatroom-backend-0.herokuapp.com`,
 
     
     getPeopleDetails: () => `${root}/user/peopleDetail`,
