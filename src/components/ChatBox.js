@@ -98,7 +98,7 @@ function ChatBox(props) {
             <div className="text-center">
               <p className="display-4">ChatRoom</p>
               <div className="mx-auto my-2 welcome-img" style={{"backgroundImage":`url(${user && user.imgUrl})`}}></div>
-              <h5 className="mt-3">Welcome NaMN</h5>
+              <h5 className="mt-3">Welcome {user && user.name}</h5>
             </div>
           </div>
         )
