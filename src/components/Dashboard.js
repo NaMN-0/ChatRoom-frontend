@@ -33,18 +33,22 @@ function Dashboard(props) {
 		<>
       <Navbar/>
       <div className = "dashboard">
-        <div className = "row p-0 m-0">
-          <div className = "col-lg-6 mid p-0 m-0">
-            <ChatBox/>
-          </div>
-          <div className = "col-lg-3 right p-0 m-0">
+        {(props.page==="people") && 
+          <div className = "col-lg-3 col-12 left p-0 m-0">
             <People/>
           </div>
-          <div className = "col-lg-3 left p-0 m-0">
+        }
+        {(props.page==="chat") && 
+          <div className = "col-lg-6 offset-lg-3 p-0 m-0 p-lg-auto m-lg-auto bg-red mid">
+            <ChatBox/>
+          </div>
+        }
+        {(props.page==="profile") && 
+          <div className = "col-lg-3 left p-0 m-0 row align-items-center">
             <ProfileCard/>
             <Search/>
           </div>
-        </div>
+        }
       </div>
     </>
 	);

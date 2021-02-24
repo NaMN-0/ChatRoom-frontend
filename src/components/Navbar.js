@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { Link, Router, useHistory } from "react-router-dom";
 
 import { logout } from "../actions/auth.js";
+import { setPage } from "../actions/helpers.js";
 
 import "./navbar.css";
 
@@ -20,29 +21,19 @@ function Navbar(props) {
     history.push("/");
   }
 
+  const navHandler = (string) => {
+    props.dispatch(setPage(string));
+  }
+
   return (
 		<>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark w-100">
-        <a className="navbar-brand link ml-1" onClick={()=>{history.push("/dashboard")}}>ChatRoom</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse text-center" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link link" onClick={()=>history.push("dashboard")}>Dashboard <span className="sr-only">(current)</span></a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link link" onClick={()=>history.push("profile")}>Profile</a>
-            </li>
-          </ul>
-          <ul className="nav ml-auto navbar-nav navbar-right">
-            <li className="nav-item">
-              <a onClick={()=>logoutHandler()} className="nav-link link">Logout</a>
-            </li>
-          </ul>
+      <div className="navbar bg-dark w-100">
+        <div className="text-center w-100 row m-0 p-0">
+          <div className="navigation-link text-center col-4 offset-lg-3 col-lg-2" onClick={()=>navHandler("profile")}>Profile</div>
+          <div className="navigation-link text-center col-4 col-lg-2" onClick={()=>navHandler("people")}>Chats</div>
+          <div className="navigation-link text-center col-4 col-lg-2" onClick={()=>logoutHandler()} >Logout</div>
         </div>
-      </nav>
+      </div>
       {/* <div className="float-right btn btn-dark" onClick={()=>logoutHandler()}>Logout</div> */}
     </>
 	);

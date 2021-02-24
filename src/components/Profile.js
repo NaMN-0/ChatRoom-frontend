@@ -104,7 +104,7 @@ function Profile(props) {
 		<> 
       <NavBar/>
       {DPForm && 
-      <div className="black-sheet h-100 d-flex justify-content-center align-items-center">
+      <div className="black-sheet d-flex justify-content-center align-items-center">
         <div className="dpForm mx-auto py-5 px-2 px-md-5">
           <button onClick={()=>setDPForm(false)} className="btn btn-dark m-0 p-1 close-btn">
             <AiOutlineClose size={30}/>

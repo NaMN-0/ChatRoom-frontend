@@ -8,7 +8,8 @@ import { FETCH_FAILURE, FETCH_REQUEST,
     EDIT_PROFILE_FAILURE, EDIT_PROFILE_SUCCESS,
     EDIT_DP_FAILURE, EDIT_DP_SUCCESS,
     GET_MSG_SUCCESS,
-    GET_PEOPLE_DETAILS_SUCCESS
+    GET_PEOPLE_DETAILS_SUCCESS,
+    SET_PAGE
  } from '../actions/actionTypes';
 
 const initState = {
@@ -20,7 +21,8 @@ const initState = {
     isLoggedIn: false,
     searchedUser: null,
     peopleList: [],
-    messages: []
+    messages: [],
+    page: "chat",
 }
 
 export default function reducer(state = initState, action){
@@ -155,6 +157,12 @@ export default function reducer(state = initState, action){
             return{
                 ...state,
                 peopleList: action.payload
+            }
+        case SET_PAGE : 
+        console.log("actions called : ", action.payload)
+            return{
+                ...state,
+                page: action.payload
             }
         default: return state
     }

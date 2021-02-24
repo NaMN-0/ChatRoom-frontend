@@ -1,17 +1,16 @@
 .dashboard{
   background-image: radial-gradient(#E6DADA,#274046);
-  min-height: 92vh;
-  padding-top: 8vh;
+  height: calc(100vh - 40px);
 }
 
 .dashboard .left{
-  min-height: 92vh;
+  height: calc(100vh - 40px);
 }
 .dashboard .mid{
-  min-height: 92vh;
+  height: calc(100vh - 40px);
 }
 .dashboard .right{
-  min-height: 92vh;
+  height: calc(100vh - 40px);
 }
 
 ::-webkit-scrollbar {

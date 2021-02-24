@@ -10,6 +10,7 @@ import { AiOutlineWechat } from "react-icons/ai";
 import { setUser2 } from "../actions/user"
 import { setMsgs } from "../actions/chat"
 import { compose } from "redux";
+import { setPage } from "../actions/helpers";
 
 function People(props) {
 
@@ -39,6 +40,7 @@ function People(props) {
         chatID = `${user2._id}-${user._id}`;
       }
       props.dispatch(setMsgs(user,user2,chatID));
+      props.dispatch(setPage("chat"));
     }
   }
 
@@ -48,14 +50,14 @@ function People(props) {
   return (
 		<>
       {user && 
-        <div className="mt-2 people">
-          <div className = "people-header text-center w-100 pt-3">
+        <div className="people h-100">
+          {/* <div className = "people-header text-center w-100 pt-3">
             <h3 className="d-flex justify-content-center align-items-center"><AiOutlineWechat size={40}/> <span className="mx-2">Starred People ({peopleList && peopleList.length})</span></h3>
           </div>
-          <hr/>
+          <hr/> */}
           <div className = "p-0 m-0 px-3">
             <form onSubmit={(e)=>e.preventDefault()} className="w-100 m-0" autoComplete="off">
-              <input onChange={(e)=>handleQueryChange(e)} className="search-input-field input  m-0 px-4 py-2 w-100" type="text" placeholder="Search for people..." name="search"/>
+              <input onChange={(e)=>handleQueryChange(e)} className="search-input-field input m-0 px-4 py-2 mt-3 w-100" type="text" placeholder="Recent Chats..." name="search"/>
             </form>
           </div>
           <hr/>

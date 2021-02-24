@@ -36,7 +36,7 @@ function Search(props) {
   return (
 		<>
       {user && 
-        <div className="m-2 search">
+        <div className="search p-2 m-0 col-12">
           <div className = "search-header text-center w-100 pt-3">
             <h3 className="d-flex justify-content-center align-items-center"><BsPeopleFill size={40}/> <span className="mx-2">Find People</span></h3>
           </div>

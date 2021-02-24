@@ -18,8 +18,14 @@ function Home(props) {
   return (
 		<>
       <div className = "home container-sm d-flex align-items-center">
-        <div className = "row row1 p-3">
-          <div className = "col-lg-6 col-md-12 col-sm-12 mb-4">
+        <div className = "row row1">
+          <div className = "left-side d-md-flex m-0 p-0 col-lg-6 col-md-12 col-sm-12 d-none align-items-center">
+            <div className="w-100 text-center">
+              <h1 className = "display-4">ChatRoom</h1>
+              <h4 className="display-5">here goes the tagline</h4>
+            </div>
+          </div>
+          <div className = "right-side col-lg-6 col-md-12 col-sm-12 m-0">
             <h1 className = "display-4">ChatRoom</h1>
             <h2>Here Goes the tagline</h2>
             <p>
@@ -29,12 +35,6 @@ function Home(props) {
             <h5>Join Site Now</h5>
             <button className="btn btn-light m-1 px-5" onClick = {() => {history.push("/login")}}>Login</button>
             <button className="btn btn-light m-1 px-5" onClick = {() => {history.push("/register")}}>Register</button>
-          </div>
-          <div className = "m-0 p-0 col-lg-6 col-md-12 col-sm-12 right-side d-flex align-items-center">
-            <div className="w-100 text-center">
-              <h1 className = "display-4">ChatRoom</h1>
-              <h4 className="display-5">here goes the tagline</h4>
-            </div>
           </div>
         </div>
       </div>

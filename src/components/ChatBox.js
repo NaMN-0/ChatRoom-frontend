@@ -56,8 +56,8 @@ function ChatBox(props) {
 		<>
       {user &&
         user2 ? (
-          <div className="m-0 m-md-2 mt-2 chatBox">
-            <div className = "chat-header w-100 d-flex align-items-center py-2 pl-2 m-0 mt-4 mt-md-0">
+          <div className="chatBox h-100">
+            <div className = "chat-header w-100 d-flex align-items-center py-2 pl-2 m-0">
               <div className = "user2ImgDiv p-0 my-auto" style={{"backgroundImage":`url(${user2.imgUrl})`}}></div>
               <div className = "mx-2">{user2.name}</div>
               {/* <div className = "ml-auto mr-4">
@@ -94,7 +94,7 @@ function ChatBox(props) {
             </div>
           </div>
         ) : (
-          <div className="m-0 m-md-2 mt-2 d-flex justify-content-center align-items-center welcome-screen">
+          <div className="m-0 h-100 d-flex justify-content-center align-items-center welcome-screen">
             <div className="text-center">
               <p className="display-4">ChatRoom</p>
               <div className="mx-auto my-2 welcome-img" style={{"backgroundImage":`url(${user && user.imgUrl})`}}></div>
