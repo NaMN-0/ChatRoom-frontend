@@ -223,16 +223,12 @@ export function editDPSuccess(user){
     }
 }
 
-export function updateDP(data){
+export function updateDP(id, imgUrl){
     return function(dispatch){
         let url = apiUrls.editDP();
         dispatch(fetchRequest());
         axios
-            .post(url,data,{
-                headers: {
-                    "Content-type": "multipart/form-data"
-                }
-            })
+            .post(url,{id,imgUrl})
             .then(res => {
                 if(res.data.msg){
                     let err = res.data.msg;
@@ -244,6 +240,29 @@ export function updateDP(data){
                 }
             })
             .catch(err => {
+                dispatch(editDPFailure(err.msg));
+            })
+    }
+}
+
+export function uploadDP(data){
+    return function(dispatch){
+        console.log("yo");
+        let url = "https://api.cloudinary.com/v1_1/namn/image/upload";
+        let id = data.get("id");
+        dispatch(fetchRequest());
+        axios
+            .post(url,data,{
+                headers: {
+                    "Content-type": "multipart/form-data"
+                }
+            })
+            .then(res => {
+                const imgUrl = res.data.url;
+                dispatch(updateDP(id, imgUrl));
+            })
+            .catch(err => {
+                console.log(err);
                 dispatch(editDPFailure(err.msg));
             })
     }

@@ -14,7 +14,7 @@ import NavBar from "./Navbar";
 import "./dPEditForm.css";
 import "./profile.css"
 
-import { updateDP } from "../actions/user.js";
+import { updateDP, uploadDP } from "../actions/user.js";
 import { getUser, editProfile } from "../actions/user";
 
 function Profile(props) {
@@ -61,7 +61,9 @@ function Profile(props) {
       let data = new FormData();
       data.append("id",user._id);
       data.append("file",curFile);
-      props.dispatch(updateDP(data));
+      data.append("upload_preset","chatroom");
+      data.append("cloud_name","NaMN");
+      props.dispatch(uploadDP(data));
       setDPForm(false);
     }
   }
