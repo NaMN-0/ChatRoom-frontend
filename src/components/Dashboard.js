@@ -19,6 +19,20 @@ function Dashboard(props) {
   let token = props.userToken;
   let list = props.peopleList;
 
+  const [width, setWidth] = useState(window.innerWidth);
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+        window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  },[]);
+  
+  let isMobile = (width <= 990);
+  console.log(isMobile);
+
   console.log("user : ", user);
 
   useEffect(() => {
@@ -31,25 +45,47 @@ function Dashboard(props) {
 
   return (
 		<>
-      <Navbar/>
-      <div className = "dashboard">
-        {(props.page==="people") && 
-          <div className = "col-lg-3 col-12 left p-0 m-0">
-            <People/>
+      {isMobile ? (
+        <>
+        <Navbar/>
+        <div className = "dashboard">
+          {(props.page==="people") && 
+            <div className = "col-lg-3 col-12 left p-0 m-0">
+              <People/>
+            </div>
+          }
+          {(props.page==="chat") && 
+            <div className = "col-lg-6 offset-lg-3 p-0 m-0 p-lg-auto m-lg-auto mid">
+              <ChatBox/>
+            </div>
+          }
+          {(props.page==="profile") && 
+            <div className = "col-lg-3 left p-0 m-0 row align-items-center">
+              <ProfileCard/>
+              <Search/>
+            </div>
+          }
+        </div>
+      </>
+      ) : (
+        <>
+        <div className = "dashboard desktop pt-3">
+          <div className="row m-0 p-0">
+            <div className = "col-lg-3 left p-0 px-1 m-0 row align-items-center">
+              <ProfileCard/>
+              <Search/>
+            </div>
+            <div className = "col-lg-6 offset-lg-3 p-0 px-1 m-0 p-lg-auto m-lg-auto mid">
+              <ChatBox/>
+            </div>
+            <div className = "col-lg-3 col-12 left p-0 px-1 m-0">
+              <People/>
+            </div>
           </div>
-        }
-        {(props.page==="chat") && 
-          <div className = "col-lg-6 offset-lg-3 p-0 m-0 p-lg-auto m-lg-auto bg-red mid">
-            <ChatBox/>
-          </div>
-        }
-        {(props.page==="profile") && 
-          <div className = "col-lg-3 left p-0 m-0 row align-items-center">
-            <ProfileCard/>
-            <Search/>
-          </div>
-        }
-      </div>
+        </div>
+      </>
+      )
+      }
     </>
 	);
 }

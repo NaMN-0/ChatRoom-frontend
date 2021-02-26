@@ -60,8 +60,7 @@ function People(props) {
               <input onChange={(e)=>handleQueryChange(e)} className="search-input-field input m-0 px-4 py-2 mt-3 w-100" type="text" placeholder="Recent Chats..." name="search"/>
             </form>
           </div>
-          <hr/>
-          <div className="people-list m-0 p-0">
+          <div className="people-list m-0 p-0 mt-2">
             {peopleList && peopleList.length===0 && 
               <div className="empty-people-list text-center m-2">
                 <p>
@@ -72,11 +71,12 @@ function People(props) {
                 </p>
               </div>
             }
+            <hr className="endHr mx-3"/>
             {peopleList && peopleList.map((item, index) => {
               return(
                 item.name.toLowerCase().includes(curQuery) ? 
                 (
-                  <div onClick={() => user2Handler(item)} key={index} className="m-0 p-0 link-hover">
+                  <div onClick={() => user2Handler(item)} key={index} className="people-div mx-3 my-1 m-0 p-0 link-hover">
                     <div className = "people-item d-flex align-items-center px-3 py-2">
                       <div className = "user2ImgDiv p-0 my-auto" style={{"backgroundImage":`url(${item.imgUrl})`}}></div>
                       <div className = "mx-3"><p className="m-0 p-0">{item.name}</p></div>
@@ -86,11 +86,11 @@ function People(props) {
                         </p>
                       </div> */}
                     </div>
-                    <hr className="m-0 ml-3 mr-2 p-0"/>
                   </div>
                 ) : (<span key={index}></span>)
               );
             })}
+            <hr className="endHr mx-3"/>
           </div>
         </div>
       }

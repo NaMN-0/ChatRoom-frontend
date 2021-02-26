@@ -22,7 +22,7 @@ function ProfileCard(props) {
   return (
 		<>
       {user && 
-        <div className = "bg-blue profileCard p-2 m-0 col-12">
+        <div className = "profileCard p-2 offset-1 col-10">
           <button onClick={()=>history.push("/profile")} className="btn btn-dark float-right settings-btn p-1">
             <MdSettings size={30}/>
           </button>

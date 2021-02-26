@@ -36,7 +36,7 @@ function Search(props) {
   return (
 		<>
       {user && 
-        <div className="search p-2 m-0 col-12">
+        <div className="search p-2 offset-1 col-10">
           <div className = "search-header text-center w-100 pt-3">
             <h3 className="d-flex justify-content-center align-items-center"><BsPeopleFill size={40}/> <span className="mx-2">Find People</span></h3>
           </div>
@@ -63,8 +63,8 @@ function Search(props) {
                 {props.searchedUser.username===props.user.username ?
                   <></> :
                   (props.user.people.filter(item => item===props.searchedUser._id).length===0) ?
-                  <button onClick={()=>starPeople()} className="btn btn-light ml-2 search-btn p-1"><AiOutlineUserAdd size={30}/></button> :
-                  <button className="disabled btn btn-light ml-2 search-btn p-1"><TiTickOutline size={30}/></button>
+                  <button onClick={()=>starPeople()} className="btn btn-dark ml-2 search-btn p-1"><AiOutlineUserAdd size={30}/></button> :
+                  <button className="btn btn-dark ml-2 search-btn p-1"><TiTickOutline size={30}/></button>
                 }
               </div>
               <hr className="m-0 p-0"/>

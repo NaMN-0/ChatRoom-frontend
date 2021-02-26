@@ -1,12 +1,18 @@
 .navbar{
   height: 40px;
-  background-color: grey !important;
+  background-color: #cfe4f6 !important;
+  color: black !important;
+  border-bottom: solid black 1px;
 }
 
 .navbar .navigation-link{
   text-transform: none;
   text-decoration: none;
-  color: white;
+}
+
+.navbar .mid-nav{
+  border-right: solid black 1px;
+  border-left: solid black 1px;
 }
 
 .navbar .navigation-link:hover{

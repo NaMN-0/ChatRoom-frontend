@@ -56,8 +56,8 @@ function ChatBox(props) {
 		<>
       {user &&
         user2 ? (
-          <div className="chatBox h-100">
-            <div className = "chat-header w-100 d-flex align-items-center py-2 pl-2 m-0">
+          <div className="chatBox h-100 px-1 m-0">
+            <div className = "chat-header w-100 d-flex align-items-center p-2 m-0">
               <div className = "user2ImgDiv p-0 my-auto" style={{"backgroundImage":`url(${user2.imgUrl})`}}></div>
               <div className = "mx-2">{user2.name}</div>
               {/* <div className = "ml-auto mr-4">
@@ -66,23 +66,24 @@ function ChatBox(props) {
                 </p>
               </div> */}
             </div>
-            <hr className="m-0 p-0"/>
             <div className = "chatbox p-2 my-2">
-              <div className = "row m-0 p-0">
-                {messages && messages.map((item, index) => {
-                  return(
-                    (user._id!==item.user1ID) ? 
-                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> : 
-                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1 user-msg float-right">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> 
-                    )}
-                )}
-                {chat && chat.map((item, index) => {
-                  return(
-                    (user._id!==item.user1) ? 
-                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> : 
-                      <div className="col-12" key={index}><div className="msg px-2 py-1 m-1 user-msg float-right">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> 
-                    )}
-                )}
+              <div className="chat-content m-0 p-0">
+                <div className = "row m-0 p-0">
+                  {messages && messages.map((item, index) => {
+                    return(
+                      (user._id!==item.user1ID) ? 
+                        <div className="col-12" key={index}><div className="msg px-2 py-1 m-1">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> : 
+                        <div className="col-12" key={index}><div className="msg px-2 py-1 m-1 user-msg float-right">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> 
+                      )}
+                  )}
+                  {chat && chat.map((item, index) => {
+                    return(
+                      (user._id!==item.user1) ? 
+                        <div className="col-12" key={index}><div className="msg px-2 py-1 m-1">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> : 
+                        <div className="col-12" key={index}><div className="msg px-2 py-1 m-1 user-msg float-right">{item.msgText}<span className="msgTime ml-2">{timeConvert(item.date)}</span></div></div> 
+                      )}
+                  )}
+                </div>
               </div>
             </div>
             <hr className="m-0 p-0"/>

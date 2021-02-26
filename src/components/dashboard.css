@@ -1,6 +1,10 @@
 .dashboard{
-  background-image: radial-gradient(#E6DADA,#274046);
+  background-image: radial-gradient(#F2F2F2,#EAEAEA);
   height: calc(100vh - 40px);
+}
+
+.desktop{
+  height: 100vh;
 }
 
 .dashboard .left{

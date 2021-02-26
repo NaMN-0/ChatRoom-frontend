@@ -75,7 +75,9 @@ export default function reducer(state = initState, action){
                 msg: "",
                 isLoggedIn: false,
                 searchedUser: null,
-                messages: []
+                peopleList: [],
+                messages: [],
+                page: "chat"
             }
         case GET_USER_SUCCESS :
             console.log("old : ", state.user);
