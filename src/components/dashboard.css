@@ -7,6 +7,10 @@
   height: 100vh;
 }
 
+.bg-default{
+  background-color: #cfe4f6;
+}
+
 .dashboard .left{
   height: calc(100vh - 40px);
 }

@@ -16,7 +16,7 @@
 }
 
 .people-list{
-  height: 83vh;
+  height: 80vh;
   overflow-y: scroll;
 }
 .people-list::-webkit-scrollbar {

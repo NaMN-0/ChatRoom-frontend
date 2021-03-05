@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, Router, useHistory } from "react-router-dom";
 
 import { getUser, getPeopleDetails } from "../actions/user.js";
+import { logout } from "../actions/auth.js";
 
 import Navbar from "./Navbar";
 import ProfileCard from "./ProfileCard";
@@ -10,11 +11,14 @@ import ChatBox from "./ChatBox";
 import People from "./People";
 import Search from "./Search";
 
+import { BiExit } from "react-icons/bi";
+
 import "./dashboard.css"
 
 function Dashboard(props) {
 
   const { user, peopleList } = props;
+  const history = useHistory();
 
   let token = props.userToken;
   let list = props.peopleList;
@@ -42,6 +46,12 @@ function Dashboard(props) {
       props.dispatch(getUser(props.userToken._id));
     }
   },[user,peopleList]);
+
+  const logoutHandler = () => {
+    localStorage.clear();
+    props.dispatch(logout());
+    history.push("/");
+  }
 
   return (
 		<>
@@ -79,6 +89,7 @@ function Dashboard(props) {
               <ChatBox/>
             </div>
             <div className = "col-lg-3 col-12 left p-0 px-1 m-0">
+              <div className="navigation-link text-center float-right mr-2" onClick={()=>logoutHandler()} ><button className="btn bg-default">Logout <BiExit size={25}/></button></div>
               <People/>
             </div>
           </div>

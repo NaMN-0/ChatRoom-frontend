@@ -17,15 +17,17 @@ function ChatBox(props) {
   const [chat, setChat] = useState([]);
   useEffect(() => {
     console.log("chatbox");
+    var scrollDiv = document.querySelector(".chat-content");
+    if(scrollDiv){
+      scrollDiv.scrollTop = scrollDiv.scrollHeight - scrollDiv.clientHeight;
+    }
   },[]);
 
   useEffect(() => {
     socket.on('msgReceive', (data) => {
-      console.log("msg received : ", data);
-      console.log("chat : ", chat);
       setChat([...chat,data.msg]);
     })
-    var scrollDiv = document.querySelector(".chatbox");
+    var scrollDiv = document.querySelector(".chat-content");
     if(scrollDiv){
       scrollDiv.scrollTop = scrollDiv.scrollHeight - scrollDiv.clientHeight;
     }

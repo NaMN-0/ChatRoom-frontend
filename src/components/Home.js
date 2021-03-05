@@ -25,7 +25,7 @@ function Home(props) {
               <h4 className="display-5">here goes the tagline</h4>
             </div>
           </div>
-          <div className = "right-side col-lg-6 col-md-12 col-sm-12 m-0">
+          <div className = "pl-lg-5 right-side col-lg-6 col-md-12 col-sm-12 m-0">
             <h1 className = "display-4">ChatRoom</h1>
             <h2>Here Goes the tagline</h2>
             <p>
