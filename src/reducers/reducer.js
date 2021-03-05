@@ -1,4 +1,4 @@
-import { FETCH_FAILURE, FETCH_REQUEST, 
+import { FETCH_FAILURE, FETCH_REQUEST, FETCH_SUCCESS,
     LOGIN_SUCCESS, REGISTER_SUCCESS, AUTHENTICATE_USER, 
     CLEAR_ERR, LOGOUT, 
     GET_USER_SUCCESS, 
@@ -38,6 +38,11 @@ export default function reducer(state = initState, action){
                 ...state,
                 loading: false,
                 msg: action.payload,
+            }
+        case FETCH_SUCCESS : 
+            return{
+                ...state,
+                loading: false,
             }
         case REGISTER_SUCCESS : 
             return{
@@ -152,6 +157,7 @@ export default function reducer(state = initState, action){
         case GET_MSG_SUCCESS : 
             return{
                 ...state,
+                loading: false,
                 messages: action.payload
             }
         case GET_PEOPLE_DETAILS_SUCCESS : 

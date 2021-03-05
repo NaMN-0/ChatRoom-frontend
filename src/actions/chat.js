@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_REQUEST, FETCH_FAILURE, GET_MSG_SUCCESS } from './actionTypes';
+import { FETCH_REQUEST, FETCH_FAILURE, GET_MSG_SUCCESS, FETCH_SUCCESS } from './actionTypes';
 import { apiUrls } from '../helpers/urls';
 
 import { socket } from "../helpers/socket";
@@ -17,6 +17,12 @@ export function fetchFailure(err){
     }
 }
 
+export function fetchSuccess(){
+    return{
+        type: FETCH_SUCCESS
+    }
+}
+
 export function setMsgSuccess(msgs){
     console.log(msgs);
     return{
@@ -27,6 +33,7 @@ export function setMsgSuccess(msgs){
 
 export function setMsgs(user1,user2,chatID){
     return function(dispatch){
+        dispatch(fetchRequest());
         socket.emit('join',{chatID});
         let url = apiUrls.getMsgs()+`?chatID=${chatID}`;
         axios
@@ -51,7 +58,7 @@ export function setMsgs(user1,user2,chatID){
 export function sendMsg(chatID,msgText,author,receiver){
     return function(dispatch){
         let url = apiUrls.sendMsg();
-        // dispatch(fetchRequest());
+        dispatch(fetchRequest());
         const user1ID = author._id;
         const json = {
             chatID,msgText,user1ID
@@ -66,6 +73,7 @@ export function sendMsg(chatID,msgText,author,receiver){
                     console.log("a msg was sent");
                     const date = Date.now();
                     socket.emit('sendMsg',{chatID,msgText,user1,user2,date});
+                    dispatch(fetchSuccess());
                 }
                 else{
                     let err = res.data.msg;

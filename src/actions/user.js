@@ -36,7 +36,7 @@ export function getUserSuccess(user){
 export function getUser(user_id){
     return function(dispatch){
         let url = apiUrls.getUser()+`?id=${user_id}`;
-        // dispatch(fetchRequest());
+        dispatch(fetchRequest());
         axios
             .get(url)
             .then(res => {
