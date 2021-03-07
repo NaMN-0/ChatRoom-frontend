@@ -42,7 +42,7 @@ function App(props) {
   
   return (
     <div className="App">
-      {true && <LoadingPage/>}
+      {props.loading && <LoadingPage/>}
       <HashRouter>
         <Switch>
           <Route exact path="/" component={Home}/>
