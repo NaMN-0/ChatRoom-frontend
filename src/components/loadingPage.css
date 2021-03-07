@@ -1,6 +1,7 @@
 .loadingDiv{
-  background-color: #cfe4f6;
-  opacity: 0.7;
+  background-color: black;
+  color: white;
+  opacity: 0.8;
   height: 100vh !important;
   width: 100vw;
   z-index: 500;
@@ -8,10 +9,35 @@
 }
 
 @keyframes rotate{
-  from {transform: rotate(0deg);}
-  to {transform: rotate(360deg);}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .loader{
+  border: rgb(255, 255, 255) 3px solid;
+  border-radius: 50%;
+}
+
+.loader1{
+  height: 35px;
+  width: 35px;
+  border-left: none;
   animation: rotate 2s infinite;
 }
+
+.loader2{
+  height: 15px;
+  width: 15px;
+  border-right: none;
+  border-bottom: none;
+  animation: rotate 1s infinite;
+}
+
+/* .loader{
+  animation: rotate 2s infinite;
+  color: white;
+} */
