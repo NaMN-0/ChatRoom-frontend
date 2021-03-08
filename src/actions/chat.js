@@ -58,7 +58,6 @@ export function setMsgs(user1,user2,chatID){
 export function sendMsg(chatID,msgText,author,receiver){
     return function(dispatch){
         let url = apiUrls.sendMsg();
-        dispatch(fetchRequest());
         const user1ID = author._id;
         const json = {
             chatID,msgText,user1ID
