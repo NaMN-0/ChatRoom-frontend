@@ -1,22 +1,21 @@
 .search{
-  background-color: #cfe4f6;
-  color: black;
-  border-radius: 10px;
+  background-image: linear-gradient(#48465c,#48465c);
+  color: white;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.250);
   min-height: 40vh;
 }
 
 .search-btn{
   border-radius: 50%;
-  background-color: #cfe4f6;
+  background-image: linear-gradient(#726f91,#726f91);
   color: black;
   outline: none;
   border: none;
 }
 
 .search-btn:hover{
-  background-color: #63a2dd;
+  background-image: linear-gradient(#48465c,#48465c);
 }
 .search-item{
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.250);
+  outline: solid 1px #6d6a8d;
 }

@@ -88,7 +88,6 @@ function ChatBox(props) {
                 </div>
               </div>
             </div>
-            <hr className="m-0 p-0"/>
             <div className = "chat-input p-2 m-0">
               <form onSubmit={(e)=>sendMsgHandler(e)} className="d-flex align-content-center w-100 m-0" autoComplete="off">
                 <input className="msg-input-field my-0 my-md-1 px-2 w-100" type="text" name="msg"/>

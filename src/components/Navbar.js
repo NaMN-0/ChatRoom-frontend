@@ -27,7 +27,7 @@ function Navbar(props) {
 
   return (
 		<>
-      <div className="w-100 m-0 p-0 mb-1">
+      <div className="w-100 m-0 p-0 mb-1 navbar">
         <div className="text-center nav-row w-100 row m-0 p-0">
           <div className="text-center col-4 m-0 p-0 py-2" onClick={()=>navHandler("profile")}>Profile</div>
           <div className="text-center col-4 mid-nav py-2" onClick={()=>navHandler("people")}>Chats</div>

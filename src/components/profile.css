@@ -1,18 +1,17 @@
 .profileEdit{
-  background-color: #cfe4f6;
-  color: black;
+  background-image: linear-gradient(#48465c,#48465c);
+  color: white;
   min-height: 47vh;
-  border-radius: 10px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.250);
 }
 
 .profileEdit hr{
-  background-color: black;
+  background-color: white;
   height: 1px;
 }
 
 .profileEdit-container{
-  background-image: radial-gradient(#F2F2F2,#EAEAEA);
+  background-image: linear-gradient(#938fbe,#9795a5);
   height: calc(100vh - 40px);
 }
 
@@ -63,7 +62,7 @@
 }
 
 .home-btn{
-  background-color: #cfe4f6;
+  background-image: linear-gradient(#726f91,#726f91);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.161);
   border-radius: 50%;
   color: black;
@@ -72,5 +71,5 @@
 }
 
 .home-btn:hover{
-  background-color: #63a2dd;
+  background-image: linear-gradient(#48465c,#48465c);
 }

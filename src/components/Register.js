@@ -37,12 +37,7 @@ function Register(props) {
 		<>
       <div className = "container register d-flex align-items-center">
         <div className = "row p-3 text-center w-100">
-          <div className = "col-lg-2"></div>
-          <div className = "col-lg-10 w-100 d-flex">
-            <button className="btn btn-dark back-btn" onClick={()=>{history.push("/")}}><BiArrowBack size={25}/></button>
-          </div>
-          <div className = "col-lg-3"></div>
-          <div className = "col-lg-6">
+          <div className = "col-lg-12">
             <h1 className = "text-left display-4">Register</h1>
             <hr/>
             <form className="mb-4" onSubmit={(e)=>{registerHandler(e)}}>
@@ -58,7 +53,7 @@ function Register(props) {
               <div className="form-group">
                 <input className="form-control" name="re_password" type="password" placeholder="Re-Enter Password"/>
               </div>
-              <p className="msg">{props.msg}</p>
+              <p className="err">{props.msg}</p>
               {props.loading && <p>Loading</p>}
               <button className="float-left btn btn-light mb-2" action="submit">Register</button>
             </form>
