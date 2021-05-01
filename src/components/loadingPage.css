@@ -8,36 +8,71 @@
   position: fixed;
 }
 
-@keyframes rotate{
-  from {
-    transform: rotate(0deg);
+@keyframes rotate1{
+  0% {
+    transform: rotate(0deg) scale(0.5) translateX(50px);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: rotate(360deg) scale(1);
+  }
+  100% {
+    transform: rotate(0deg) scale(0.5) translateX(50px);
+  }
+}
+@keyframes rotate2{
+  0% {
+    transform: rotate(0deg) scale(0.5) translateX(-50px);
+  }
+  50% {
+    transform: rotate(360deg) scale(1);
+  }
+  100% {
+    transform: rotate(0deg) scale(0.5) translateX(-50px);
+  }
+}
+@keyframes rotate3{
+  0% {
+    transform: rotate(0deg) scale(0.5) translateY(50px);
+  }
+  50% {
+    transform: rotate(360deg) scale(1);
+  }
+  100% {
+    transform: rotate(0deg) scale(0.5) translateY(50px);
+  }
+}
+@keyframes rotate4{
+  0% {
+    transform: rotate(0deg) scale(0.5) translateY(-50px);
+  }
+  50% {
+    transform: rotate(360deg) scale(1);
+  }
+  100% {
+    transform: rotate(0deg) scale(0.5) translateY(-50px);
   }
 }
 
 .loader{
-  border: rgb(255, 255, 255) 3px solid;
+  position: absolute;
   border-radius: 50%;
+  height: 10px;
+  width: 10px;
 }
 
 .loader1{
-  height: 35px;
-  width: 35px;
-  border-left: none;
-  animation: rotate 2s infinite;
+  background-color: red;
+  animation: rotate1 2s 0s infinite reverse;
 }
-
 .loader2{
-  height: 15px;
-  width: 15px;
-  border-right: none;
-  border-bottom: none;
-  animation: rotate 1s infinite;
+  background-color: blue;
+  animation: rotate2 2s 0s infinite reverse;
 }
-
-/* .loader{
-  animation: rotate 2s infinite;
-  color: white;
-} */
+.loader3{
+  background-color: green;
+  animation: rotate3 2s 0s infinite reverse;
+}
+.loader4{
+  background-color: yellow;
+  animation: rotate4 2s 0s infinite reverse;
+}

@@ -8,10 +8,10 @@ function LoadingPage(props) {
   return (
 		<>
       <div className="loadingDiv m-0 p-0 d-flex align-items-center justify-content-center">
-        {/* <BiLoaderCircle className="loader" size={25}/> */}
-        <div className="loader loader1 d-flex align-items-center justify-content-center">
-          <div className="loader loader2 mx-2"></div>
-        </div>
+          <div className="loader loader1 d-flex align-items-center justify-content-center"></div>
+          <div className="loader loader2 d-flex align-items-center justify-content-center"></div>
+          <div className="loader loader3 d-flex align-items-center justify-content-center"></div>
+          <div className="loader loader4 d-flex align-items-center justify-content-center"></div>
       </div>
     </>
 	);
