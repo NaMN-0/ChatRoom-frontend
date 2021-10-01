@@ -1,7 +1,11 @@
-const root = "http://localhost:8000/api"
+const root = "http://chatroom-backend-0.herokuapp.com/api"
 
 export const apiUrls = {
     
+    backendAPI: () => `http://chatroom-backend-0.herokuapp.com`,
+
+    
+    getPeopleDetails: () => `${root}/user/peopleDetail`,
     getMsgs: () => `${root}/chat/getMsgs`,
     sendMsg: () => `${root}/chat/sendMsg`,
     editDP: () => `${root}/files/uploadDP`,

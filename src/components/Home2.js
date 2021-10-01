@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import { Link, Router, useHistory } from "react-router-dom";
 import "./home.css";
 
-import Login from "./Login";
+import Register from "./Register";
 
-function Home(props) {
+function Home2(props) {
 
   const history = useHistory();
 
@@ -18,9 +18,9 @@ function Home(props) {
 
   return (
 		<>
-      <div className = "home m-0 p-0 d-flex align-items-center">
+      <div className = "home m-0 p-0 d-flex align-items-center home2">
         <div className = "row row1 p-0 m-0 w-100">
-          <div className = "left-side d-lg-flex m-0 col-lg-6 col-md-12 col-sm-12 d-none flex-column justify-content-center p-5">
+          <div className = "left-side d-lg-flex m-0 col-lg-6 col-md-12 col-sm-12 d-none flex-column justify-content-center p-5 left-side2">
             <h1 className = "display-4">ChatRoom</h1>
             <h2>Discover the difference!</h2>
             <p className="mr-5">
@@ -31,7 +31,7 @@ function Home(props) {
             <hr/>
           </div>
           <div className = "pl-lg-5 right-side col-lg-5 col-md-12 col-sm-12 m-0 d-flex flex-column justify-content-center">
-            <Login/>
+            <Register/>  
           </div>
           <div className = "extra1 d-lg-flex"></div>
           <div className = "extra2 d-lg-flex"></div>
@@ -47,4 +47,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Home2);

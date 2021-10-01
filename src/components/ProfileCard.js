@@ -3,11 +3,18 @@ import {connect} from 'react-redux';
 import { Link, Router, useHistory } from "react-router-dom";
 
 import { GoPrimitiveDot } from "react-icons/go"; 
-import { FcSettings } from "react-icons/fc"; 
+import { BiNotepad } from "react-icons/bi"; 
+import { MdSettings } from "react-icons/md"; 
+import { FaUserCircle } from "react-icons/fa"; 
 
 import "./profileCard.css"
+import { dateConvert } from "../helpers/dateTime";
 
 function ProfileCard(props) {
+
+  useEffect(() => {
+    console.log("profile-card");
+  },[]);
 
   const { user } = props;
   const history = useHistory();
@@ -15,30 +22,31 @@ function ProfileCard(props) {
   return (
 		<>
       {user && 
-        <div className = "bg-blue profileCard p-2 m-2">
-          <button onClick={()=>history.push("/profile")} className="btn btn-light float-right settings-btn p-1">
-            <FcSettings size={30}/>
+        <div className = "profileCard p-2 offset-1 col-10">
+          <button onClick={()=>history.push("/profile")} className="btn btn-dark float-right settings-btn p-1">
+            <MdSettings size={30}/>
           </button>
           <div className="row p-0 m-0 py-2">
             <div className = "profileImgDiv p-0 ml-3" style={{"backgroundImage":`url(${user.imgUrl})`}}></div>
             <div className = "col-6 my-auto align-items-center">
               <h5 className="m-0 p-0">{user.username}</h5>
-              {/* <p className="m-0 p-0 align-items-center">
-                {user.status ? <span className="online"><GoPrimitiveDot size={15} />Online</span> : <span className="lastSeen">Last Seen at {user.lastSeen}</span>}
-              </p> */}
+              <p className="m-0 p-0 align-items-center joined">
+                <span>{`Joined on ${dateConvert(user.dateJoined)}`}</span>
+              </p>
             </div>
           </div>
           <>
             <div className = "col-12">
-              <hr/>
+              <hr className="w-100"/>
               <p>
+                <FaUserCircle className="mb-1 mr-2" size={20}/>
                 {user.name}
                 <br/>
+                <BiNotepad className="mb-1 mr-2" size={20}/>
                 {user.bio}
               </p>
             </div>
           </>
-          <hr/>
         </div>
       }
     </>

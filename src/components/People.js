@@ -9,12 +9,18 @@ import { AiOutlineWechat } from "react-icons/ai";
 
 import { setUser2 } from "../actions/user"
 import { setMsgs } from "../actions/chat"
+import { compose } from "redux";
+import { setPage } from "../actions/helpers";
 
 function People(props) {
 
   const history = useHistory();
 
-  const { user } = props;
+  const { user, peopleList } = props;
+
+  useEffect(() => {
+    console.log("people");
+  },[]);
 
   const [curQuery,setCurQuery] = useState("");
 
@@ -33,46 +39,58 @@ function People(props) {
       else{
         chatID = `${user2._id}-${user._id}`;
       }
-      props.dispatch(setMsgs(chatID));
+      props.dispatch(setMsgs(user,user2,chatID));
+      props.dispatch(setPage("chat"));
     }
   }
 
-  // const people = [user,user,user,user,user,user,user,user,user,user,user,user];
+  // const peopleList1 = [user,user,user,user,user,user,user,user,user,user,user,user];
+  // const peopleList1 = [];
 
   return (
 		<>
       {user && 
-        <div className="m-2 people">
-          <div className = "people-header text-center w-100 pt-3">
-            <h3 className="d-flex justify-content-center align-items-center"><AiOutlineWechat size={40}/> <span className="mx-2">Starred People</span></h3>
+        <div className="people h-100">
+          {/* <div className = "people-header text-center w-100 pt-3">
+            <h3 className="d-flex justify-content-center align-items-center"><AiOutlineWechat size={40}/> <span className="mx-2">Starred People ({peopleList && peopleList.length})</span></h3>
           </div>
-          <hr/>
+          <hr/> */}
           <div className = "p-0 m-0 px-3">
             <form onSubmit={(e)=>e.preventDefault()} className="w-100 m-0" autoComplete="off">
-              <input onChange={(e)=>handleQueryChange(e)} className="search-input-field input  m-0 px-4 py-2 w-100" type="text" placeholder="Search for people..." name="search"/>
+              <input onChange={(e)=>handleQueryChange(e)} className="search-input-field input m-0 px-4 py-2 mt-3 w-100" type="text" placeholder="Recent Chats..." name="search"/>
             </form>
-            <hr/>
           </div>
-          <div className="people-list m-0 p-0">
-            {user.people.map((item, index) => {
+          <div className="people-list m-0 p-0 mt-2">
+            {peopleList && peopleList.length===0 && 
+              <div className="empty-people-list text-center m-2">
+                <p>
+                  No one to display yet!
+                </p>
+                <p>
+                  search "NaMN" in Find People
+                </p>
+              </div>
+            }
+            <hr className="endHr mx-3"/>
+            {peopleList && peopleList.map((item, index) => {
               return(
                 item.name.toLowerCase().includes(curQuery) ? 
                 (
-                  <div onClick={() => user2Handler(item)} key={index} className="m-0 p-0">
+                  <div onClick={() => user2Handler(item)} key={index} className="people-div mx-3 my-1 m-0 p-0 link-hover">
                     <div className = "people-item d-flex align-items-center px-3 py-2">
                       <div className = "user2ImgDiv p-0 my-auto" style={{"backgroundImage":`url(${item.imgUrl})`}}></div>
-                      <div className = "mx-2">{item.name}</div>
+                      <div className = "mx-3"><p className="m-0 p-0">{item.name}</p></div>
                       {/* <div className = "ml-auto mr-4">
                         <p className="m-0 p-0 align-items-center">
                           {item.status ? <span className="online"><GoPrimitiveDot size={15} />Online</span> : <span className="lastSeen">Last Seen at {user.lastSeen}</span>}
                         </p>
                       </div> */}
                     </div>
-                    <hr className="m-0 p-0"/>
                   </div>
-                ) : (<></>)
+                ) : (<span key={index}></span>)
               );
             })}
+            <hr className="endHr mx-3"/>
           </div>
         </div>
       }

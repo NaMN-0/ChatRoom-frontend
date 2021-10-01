@@ -1,6 +1,8 @@
 import axios from 'axios';
-import { FETCH_REQUEST, FETCH_FAILURE, GET_MSG_SUCCESS } from './actionTypes';
+import { FETCH_REQUEST, FETCH_FAILURE, GET_MSG_SUCCESS, FETCH_SUCCESS } from './actionTypes';
 import { apiUrls } from '../helpers/urls';
+
+import { socket } from "../helpers/socket";
 
 export function fetchRequest(){
     return{
@@ -15,6 +17,12 @@ export function fetchFailure(err){
     }
 }
 
+export function fetchSuccess(){
+    return{
+        type: FETCH_SUCCESS
+    }
+}
+
 export function setMsgSuccess(msgs){
     console.log(msgs);
     return{
@@ -23,8 +31,10 @@ export function setMsgSuccess(msgs){
     }
 }
 
-export function setMsgs(chatID){
+export function setMsgs(user1,user2,chatID){
     return function(dispatch){
+        dispatch(fetchRequest());
+        socket.emit('join',{chatID});
         let url = apiUrls.getMsgs()+`?chatID=${chatID}`;
         axios
             .get(url)
@@ -45,19 +55,24 @@ export function setMsgs(chatID){
     }
 }
 
-export function sendMsg(chatID,msgText,author){
+export function sendMsg(chatID,msgText,author,receiver){
     return function(dispatch){
         let url = apiUrls.sendMsg();
-        dispatch(fetchRequest());
+        const user1ID = author._id;
         const json = {
-            chatID,msgText,author
+            chatID,msgText,user1ID
         }
         console.log(json);
         axios
             .post(url, json)
             .then(res => {
                 if(!res.data.msg){
-                    dispatch(setMsgs(chatID));
+                    const user1 = author._id;
+                    const user2 = receiver._id;
+                    console.log("a msg was sent");
+                    const date = Date.now();
+                    socket.emit('sendMsg',{chatID,msgText,user1,user2,date});
+                    dispatch(fetchSuccess());
                 }
                 else{
                     let err = res.data.msg;

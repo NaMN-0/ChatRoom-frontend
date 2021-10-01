@@ -5,10 +5,13 @@ import { FETCH_REQUEST, FETCH_FAILURE,
     ADD_PEOPLE_SUCCESS, ADD_PEOPLE_FAILURE, 
     SET_USER2,
     EDIT_PROFILE_FAILURE, EDIT_PROFILE_SUCCESS,
-    EDIT_DP_FAILURE, EDIT_DP_SUCCESS
+    EDIT_DP_FAILURE, EDIT_DP_SUCCESS,
+    GET_PEOPLE_DETAILS_SUCCESS
  } from './actionTypes';
 import { apiUrls } from '../helpers/urls';
 import jwt from "jsonwebtoken";
+
+import { socket } from "../helpers/socket";
 
 export function fetchRequest(){
     return{
@@ -39,14 +42,48 @@ export function getUser(user_id){
             .then(res => {
                 if(res.data){
                     const user = res.data;
+                    console.log("success");
+                    socket.emit("login",user_id);
+                    dispatch(getPeopleDetails(user.people));
                     dispatch(getUserSuccess(user));
                 }
                 else{
                     let err = res.data.msg;
+                    console.log("failure1");
                     dispatch(fetchFailure(err));
                 }
             })
             .catch(err => {
+                console.log("failure2");
+                dispatch(fetchFailure(err.msg));
+            })
+    }
+}
+export function getPeopleDetailSuccess(peopleDetailList){
+    return {
+        type: GET_PEOPLE_DETAILS_SUCCESS,
+        payload: peopleDetailList
+    }
+}
+
+export function getPeopleDetails(peopleList){
+    return function(dispatch){
+        let url = apiUrls.getPeopleDetails();
+        axios
+            .post(url, peopleList)
+            .then(res => {
+                if(res.data){
+                    const peopleDetailList = res.data;
+                    dispatch(getPeopleDetailSuccess(peopleDetailList));
+                }
+                else{
+                    let err = res.data.msg;
+                    console.log("failure1");
+                    dispatch(fetchFailure(err));
+                }
+            })
+            .catch(err => {
+                console.log("failure2");
                 dispatch(fetchFailure(err.msg));
             })
     }
@@ -116,6 +153,7 @@ export function addPeople(id1,id2){
                 else{
                     const user = res.data;
                     dispatch(addPeopleSuccess(user));
+                    dispatch(getPeopleDetails(user.people));
                 }
             })
             .catch(err => {
@@ -185,16 +223,12 @@ export function editDPSuccess(user){
     }
 }
 
-export function updateDP(data){
+export function updateDP(id, imgUrl){
     return function(dispatch){
         let url = apiUrls.editDP();
         dispatch(fetchRequest());
         axios
-            .post(url,data,{
-                headers: {
-                    "Content-type": "multipart/form-data"
-                }
-            })
+            .post(url,{id,imgUrl})
             .then(res => {
                 if(res.data.msg){
                     let err = res.data.msg;
@@ -206,6 +240,29 @@ export function updateDP(data){
                 }
             })
             .catch(err => {
+                dispatch(editDPFailure(err.msg));
+            })
+    }
+}
+
+export function uploadDP(data){
+    return function(dispatch){
+        console.log("yo");
+        let url = "https://api.cloudinary.com/v1_1/namn/image/upload";
+        let id = data.get("id");
+        dispatch(fetchRequest());
+        axios
+            .post(url,data,{
+                headers: {
+                    "Content-type": "multipart/form-data"
+                }
+            })
+            .then(res => {
+                const imgUrl = res.data.url;
+                dispatch(updateDP(id, imgUrl));
+            })
+            .catch(err => {
+                console.log(err);
                 dispatch(editDPFailure(err.msg));
             })
     }

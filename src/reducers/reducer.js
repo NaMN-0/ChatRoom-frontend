@@ -1,4 +1,4 @@
-import { FETCH_FAILURE, FETCH_REQUEST, 
+import { FETCH_FAILURE, FETCH_REQUEST, FETCH_SUCCESS,
     LOGIN_SUCCESS, REGISTER_SUCCESS, AUTHENTICATE_USER, 
     CLEAR_ERR, LOGOUT, 
     GET_USER_SUCCESS, 
@@ -7,7 +7,9 @@ import { FETCH_FAILURE, FETCH_REQUEST,
     SET_USER2,
     EDIT_PROFILE_FAILURE, EDIT_PROFILE_SUCCESS,
     EDIT_DP_FAILURE, EDIT_DP_SUCCESS,
-    GET_MSG_SUCCESS
+    GET_MSG_SUCCESS,
+    GET_PEOPLE_DETAILS_SUCCESS,
+    SET_PAGE
  } from '../actions/actionTypes';
 
 const initState = {
@@ -18,7 +20,9 @@ const initState = {
     msg: "",
     isLoggedIn: false,
     searchedUser: null,
-    messages: []
+    peopleList: [],
+    messages: [],
+    page: "chat",
 }
 
 export default function reducer(state = initState, action){
@@ -34,6 +38,11 @@ export default function reducer(state = initState, action){
                 ...state,
                 loading: false,
                 msg: action.payload,
+            }
+        case FETCH_SUCCESS : 
+            return{
+                ...state,
+                loading: false,
             }
         case REGISTER_SUCCESS : 
             return{
@@ -71,9 +80,13 @@ export default function reducer(state = initState, action){
                 msg: "",
                 isLoggedIn: false,
                 searchedUser: null,
-                messages: []
+                peopleList: [],
+                messages: [],
+                page: "chat"
             }
         case GET_USER_SUCCESS :
+            console.log("old : ", state.user);
+            console.log("new : ", action.payload);
             return{
                 ...state,
                 loading: false,
@@ -144,7 +157,20 @@ export default function reducer(state = initState, action){
         case GET_MSG_SUCCESS : 
             return{
                 ...state,
+                loading: false,
                 messages: action.payload
+            }
+        case GET_PEOPLE_DETAILS_SUCCESS : 
+            console.log("old one : ", state.peopleList);
+            return{
+                ...state,
+                peopleList: action.payload
+            }
+        case SET_PAGE : 
+        console.log("actions called : ", action.payload)
+            return{
+                ...state,
+                page: action.payload
             }
         default: return state
     }

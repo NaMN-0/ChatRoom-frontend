@@ -1,4 +1,15 @@
 .navbar{
-  background-color: chocolate;
-  min-height: 8vh;
+  height: 40px;
+  background-color: red !important;
+  background-image: linear-gradient(#48465c,#48465c) !important;
+  color: white !important;
+  border-bottom: solid black 1px;
+}
+
+.nav-row div{
+  outline: solid 1px #74709e;
+}
+
+.navbar .navigation-link:hover{
+  cursor: pointer;
 }
